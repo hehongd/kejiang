@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";
+
+    var eric={
+      eid:1001, //只读
+      ename:"埃里克"
+    };
+    //设置eid只读
+    Object.defineProperty(eric,"eid",{
+      writable:false,
+      configurable:false
+    });
+    //禁止给eric对象扩展新属性
+    Object.preventExtensions(eric);
+
+    //尝试修改eid
+    //eric.eid=-2; //报错:Cannot assign to read only property 'eid'
+    //                  不能   赋值   给    只读      属性     eid
+    //但是，因为eid管的太严，屌丝觉得不好用，于是自己另起炉灶，添加了一个甚至多个eid
+    eric.Eid=-2; //报错: 
+    //Cannot add property Eid, object is not extensible
+    //不能  添加  属性     Eid（因为）对象是不   可扩展
+    console.log(eric);
+  </script>
+</body>
+</html>

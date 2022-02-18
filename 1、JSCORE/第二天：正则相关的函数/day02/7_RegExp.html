@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //假设每次都要从服务器端动态获取了一个新的包含关键词的数组
+    //希望，数组中有什么关键词，咱们就要防住什么关键词
+    var arr=["青天","明月","紫烟"];//服务器上关键词列表可能发生变化
+    console.log(arr.join("|"));
+    //目的: 也不需要修改下方的js程序，就可屏蔽新的关键词列表。
+
+
+
+
+
+
+    //请用户输入一条消息
+    var msg=prompt("请输入消息内容");
+    //定义正则表达式防住arr数组中包含的关键词
+    //var reg=/arr.join("|")/; 错误://之间不认识js语句
+    var reg=new RegExp(arr.join("|"));
+    //                 "明月|青天|紫烟"
+    //      new RegExp(     "正则"     )
+    console.log(reg);
+    //用正则表达式查找msg中是否包含关键词
+    var i=msg.search(reg);
+    //如果msg中包含关键词
+    if(i!=-1){
+      //则在网页中显示: 包含关键词禁止发送
+      document.write(`<h1 style="color:red">发现敏感词，禁止发送！</h1>`)
+    }else{//否则如果msg中不包含关键词
+      //则在网页中显示: 消息内容
+      document.write(`<h1 style="color:green">然哥说: ${msg}</h1>`)
+    }
+  </script>
+</body>
+</html>

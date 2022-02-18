@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>动态创建表格</title>
+    <meta charset="utf-8" />
+    <style>
+      table{width:600px; border-collapse:collapse;
+        text-align:center;
+      }
+      td,th{border:1px solid #ccc}
+    </style>
+  </head>
+  <body>
+    <div id="data">
+      <table>
+        <thead>
+          <tr>
+            <th>员工姓名</th>
+            <th>薪资</th>
+            <th>员工年龄</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <script>
+    var json=[
+      {"ename":"Tom", "salary":11000, "age":25},
+      {"ename":"John", "salary":13000, "age":28},
+      {"ename":"Mary", "salary":12000, "age":25}
+    ];
+    //先创建一个tbody元素
+    var tbody=document.createElement("tbody");
+    //暂时不要将tbody元素追加到table中
+
+    //遍历json数组中每个员工对象
+    for(var emp of json){
+      //每遍历一个员工对象，就创建一个tr，将tr追加到tbody下
+      var tr=document.createElement("tr");
+      tbody.appendChild(tr);
+      //遍历当前emp对象中每个属性值
+      for(var key in emp){
+        //每遍历一个属性值，就创建一个td，并设置td的内容为当前属性值，最后将td追加到当前tr对象中
+        var td=document.createElement("td");
+        td.innerHTML=emp[key];//因为key是变量，所以不加""
+        tr.appendChild(td);
+      }
+    }
+
+    //等tbody中所有内容都加载完了，最后一次性将整个tbody追加到DOM树
+    //查找table对象
+    var table=document.querySelector("#data>table");
+    table.appendChild(tbody);
+    //浏览器只需要一次重排重绘
+    //对效果没有影响，却极大的优化了页面加载效率！
+    </script>
+  </body>
+</html>

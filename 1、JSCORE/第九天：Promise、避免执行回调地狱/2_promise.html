@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //亮可以跑步
+    function liang(){
+      //让外部知道liang中有一个格子间
+      return new Promise(
+        //       赠了一个门
+        function(door){
+          //原来的异步任务！该怎么写就怎么写
+          console.log(`亮起跑...`);
+          setTimeout(function(){ //异步
+            console.log(`亮到达终点!`);
+            //亮执行完之后，要开门！下一项任务才知道该轮到自己执行了
+            door();
+          },6000)//亮需要6s跑完全程
+        }
+      )
+    }
+    //然可以跑步
+    function ran(){
+      //让外界知道ran里有一个格子间
+      return new Promise(
+        function(door){
+          console.log(`然起跑...`);
+          setTimeout(function(){ //异步
+            console.log(`然到达终点!`);
+            //然最后一步执行完，一定记着开门！
+            door();
+          },4000)//然需要4s跑完全程
+        }
+      )
+    }
+    //东可以跑步
+    function dong(){
+      console.log(`东起跑...`);
+      setTimeout(function(){ //异步
+        console.log(`东到达终点!`)
+      },2000)//东需要2s跑完全程
+    }
+
+    // //让亮先执行，但是亮之后接着然继续执行
+    // liang()
+    // //return一个new Promise对象（格子间）
+    // //所有格子间都有.then()方法用来连接下一项任务或下一个格子间
+    // .then(ran)//千万不要加()，因为ran不是立刻调用，仅仅是和前一个任务连接起来而已
+    // //当亮中调用door()后.then中的ran()开始执行
+    // //ran结束后，又return一个new Promise对象(格子间)
+    // //所有格子间都可以继续.then()
+    // .then(dong)//千万不要加()，因为dong不是立刻调用，仅仅是和前一个任务连接起来而已
+    //所以: 
+    liang().then(ran).then(dong);
+  </script>
+</body>
+</html>

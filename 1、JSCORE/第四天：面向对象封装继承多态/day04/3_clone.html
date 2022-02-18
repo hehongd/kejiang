@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lilei={
+      sname:"Li Lei",
+      sage:11
+    };
+    //定义一个函数clone()
+    //接收一个原对象
+    //经过加工和处理
+    //返回一个一模一样的新对象
+    function clone(oldObj){
+      //1. 先创建一个空对象等着！
+      var newObj={};
+      //2. 遍历旧对象中每个属性
+      for(var key in oldObj){
+        //每遍历旧对象中一个属性，都要为新对象强行一个同性的新属性，属性值等于旧对象中当前同名属性值
+        newObj[key]=oldObj[key];
+      }
+      //3. 返回克隆好的新对象
+      return newObj;
+    }
+    //测试: 
+    var lilei2=clone(lilei);
+    console.log(lilei);//长的一模一样
+    console.log(lilei2);//长的一模一样
+    console.log(lilei==lilei2); //false 说明两个对象地址不同！是两个独立的存储空间
+
+    var hmm={
+      sname:"Han Meimei",
+      sage:12
+    }
+    var hmm2=clone(hmm);
+    console.log(hmm);//长的一模一样
+    console.log(hmm2);//长的一模一样
+    console.log(hmm==hmm2); //false
+  </script>
+</body>
+</html>

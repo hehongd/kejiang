@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";//启用严格模式
+
+    //想定义一个函数可以给女朋友发送一条消息
+    function send(){
+      var gf; //女朋友
+      //我想告诉她: 今晚308,w84u
+      //但是不小心变量名拼错了
+      //js没有变量检查机制，即使写错变量名，变量不存在，也会在全局创建该变量
+      pyq="今晚308,w84u";//严格模式: 报错！阻止了一次误操作的发生
+      console.log(`我女朋友收到:${gf}`);
+    }
+    send();
+    //在全局输出变量pyq的内容
+    console.log(`我的朋友圈:${pyq}`);
+  </script>
+</body>
+</html>

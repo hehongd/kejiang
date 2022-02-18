@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--根据变量值不同，显示不同的登录状态-->
+        <!--希望点击登录，切换到已登录状态
+        希望点击注销，切换回未登录状态-->
+        <!--希望未登录时只显示第一个div-->
+        <div v-if="isLogin==false">
+            <a href="javascript:;" @click="login">登录</a> | <a href="javascript:;">注册</a>
+        </div>
+        <!--已登录时只显示第二个div-->
+        <div v-else>
+            <h3>Welcome dingding | <a href="javascript:;" @click="logout">注销</a></h3>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            //因为页面上需要根据一个变量值显示不同的登录状态，所以data中要提供一个变量表示是否登录
+            data: {
+                isLogin: false, //开局，默认未登录
+            },
+            //因为页面上需要两个事件处理函数，所以methods中就要准备2个事件处理函数: login    logout
+            methods: {
+                login() {
+                    this.isLogin = true;
+                },
+                logout() {
+                    this.isLogin = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<style>
+			#d1 #d2 #d3{cursor:pointer}
+			#d1 {
+				background-color: green;
+				position: relative;
+				width: 150px;
+				height: 150px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			#d2 {
+				background-color: blue;
+				position: absolute;
+				top: 25px;
+				left: 25px;
+				width: 100px;
+				height: 100px;
+			}
+
+			#d3 {
+				background-color: red;
+				position: absolute;
+				top: 25px;
+				left: 25px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<div id="d2">
+				<div id="d3">
+				</div>
+			</div>
+		</div>
+    <script>
+			var d1=document.getElementById("d1");
+			var d2=document.getElementById("d2");
+			var d3=document.getElementById("d3");
+			//想点哪个div，哪个div喊疼！
+			d1.onclick=function(){
+				alert("d1疼！")
+			}
+			d2.onclick=function(e){
+				e.stopPropagation()
+				alert("d2疼！")
+			}
+			d3.onclick=function(e){
+				e.stopPropagation()
+				alert("d3疼！")
+			}
+		</script>
+	</body>
+</html>

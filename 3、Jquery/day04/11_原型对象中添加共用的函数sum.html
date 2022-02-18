@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //在jQuery家原型对象中添加共用的函数sum
+    jQuery.prototype.sum=function(){
+      console.log(`调用了一次我自定义的sum函数`)
+      //遍历sum.前的查找结果中的每个dom元素的内容，并累加求和
+      var result=0;
+      //问题: 如何获得将来调用这个公共函数的.前的查找结果对象？！
+      //将来: $("ul>li").sum()
+      //                 this->$("ul>li")
+      for(var i=0;i<this.length;i++){
+        //因为this是$("ul>li")，是类数组对象，其中包含了多个DOM元素li对象
+        //this[i]取出的应该是一个DOM的li对象
+        result+=parseInt(this[i].innerHTML)
+      }
+      return result;
+    }
+  </script>
+</head>
+
+<body>
+  <ul>
+    <li>85</li>
+    <li>91</li>
+    <li>73</li>
+    <li>59</li>
+  </ul>
+  <script>
+  //比如: 我经常需要对找到的所有元素内容求和！
+  //         jquery家子对象
+  var result=$("ul>li").sum()
+  console.log(result);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  "use strict";
+
+  //一会儿要讲的新知识，先不要问为什么
+  //一个员工eric
+  var eric={
+    eid:1001,
+    ename:"埃里克"
+  }
+  //公司规定员工编号不能随意修改——只读
+  //      定义   属性    eric的eid属性为不可修改
+  Object.defineProperty(eric,"eid",{writable:false});
+
+  //试图修改eric的eid属性值
+  eric.eid=1002;//严格模式: 报错: 
+  //Cannot assign to read only property 'eid' of object
+  //不能    赋值   给    只读    属性      eid
+  //不能给只读属性eid赋值——23行
+  console.log(eric);//没改成
+  </script>
+</body>
+</html>

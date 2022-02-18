@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //有一个公共的计算薪资的函数
+    //三个形参      底薪   奖金1    奖金2
+    function jisuan(base, bonus1, bonus2){
+      console.log(`${this.ename} 的总工资是: ${base+bonus1+bonus2}`)
+    }
+    //一个员工lilei
+    var lilei={ ename:"Li Lei" };
+    //每个月开工资时都要计算自己的薪资
+    //李磊买一个自己专属的新计算器呢！
+    var jisuan2=jisuan.bind(lilei,10000);
+    //2件事: 
+    //创建了一个和jisuan()一模一样的新函数副本
+    //将新函数jisuan2中的this永久替换为了lilei
+    //将将函数中第一个形参base永久固定为10000
+    //   底薪几乎不变
+    jisuan2(1000,2000);
+    jisuan2(500,1000);
+    jisuan2(2000,2000);
+  </script>
+</body>
+</html>

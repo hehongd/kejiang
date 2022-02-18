@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //请用户输入一个密码:
+  var pwd=prompt("请输入密码");
+  //定义一个正则表达式描述密码的格式: 6位数字
+  var reg=/^\d{6}$/; //从头到尾只能是6位数字
+  //用reg检查用户输入的密码pwd是否符合格式要求: 
+  var bool=reg.test(pwd);
+  //如果检查通过
+  if(bool==true){
+    //就在页面输出: 密码可用
+    document.write(`<h1 style="color:green">密码可用</h1>`)
+  }else{//否则如果检查未通过
+    //就在页面输出: 密码格式不正确
+    document.write(`<h1 style="color:red">密码格式不正确</h1>`)
+  }
+  </script>
+</body>
+</html>

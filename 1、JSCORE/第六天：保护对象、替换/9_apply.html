@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //有一个公共的计算薪资的函数
+    //三个形参      底薪   奖金1    奖金2
+    function jisuan(base, bonus1, bonus2){
+      console.log(`${this.ename} 的总工资是: ${base+bonus1+bonus2}`)
+    }
+    //一个员工lilei 
+    var lilei={ ename:"Li Lei" };
+    //李磊想用jisuan()计算自己的薪资
+    //但是李磊的薪资是放在一个数组中的
+    var arr=[10000,1000,2000];
+    //jisuan.call(lilei,arr[0],arr[1],arr[2])
+    jisuan.apply(lilei,arr)
+    //           |      打散数组为多个值
+    //           |     10000 1000  2000
+    //           |      ↓     ↓      ↓
+    //  jisuan(  ↓    base,bonus1,bonus2)
+    //          this.ename
+  </script>
+</body>
+</html>

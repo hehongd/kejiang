@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //创建一个学生对象，来描述现实中一个学生的属性值和会做的事儿
+  //学生姓名: Li Lei
+  //学生年龄: 11
+  //学生会自我介绍: 李磊会说: I'm Li Lei, I'm 11
+  var lilei={ //对象的{}不是作用域
+  //属性名 : 属性值
+    ename: "Li Lei",
+    eage: 11,
+  //功能/方法: 因为功能是指会做一件事，所以功能被定义为一个函数
+    intr:function(){
+      console.log(`I'm ${this.ename}, I'm ${this.eage}`); //报错: ename未定义
+    }
+  }
+  //想输出李磊的年龄：
+  console.log(`李磊的年龄: ${lilei.eage}`);
+  //想请李磊做自我介绍: 
+  lilei.intr();
+  //过了一年，李磊长了一岁
+  lilei.eage++;
+  //再输出李磊的年龄
+  console.log(`李磊的年龄: ${lilei.eage}`);
+  //再请李磊做自我介绍
+  lilei.intr();
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //想定义一个会做菜的函数
+    function cook(cai,dan,mian){ //只会做固定一种菜: 西红柿鸡蛋面
+      console.log(`炒${cai}`);
+      console.log(`炒${dan}`);
+      console.log(`${cai}和${dan}一起炒`);
+      console.log(`煮${mian}`);
+      return `香喷喷的${cai}${dan}${mian}`
+    };
+    //周一: 
+    var wan=cook("西红柿","鸡蛋","面");
+    console.log(`一碗${wan}`);
+    //周二: 
+    var wan=cook("辣条","螺蛳","粉儿");
+    console.log(`一碗${wan}`);
+  </script>
+</body>
+</html>

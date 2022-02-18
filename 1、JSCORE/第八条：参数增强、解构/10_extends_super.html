@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //先定义父类型Flyer
+    class Flyer{
+      constructor(x,y){
+        this.x=x;
+        this.y=y;
+      }
+      fly(){
+        console.log(`飞到x:${this.x},y:${this.y}位置`)
+      }
+    }
+    //再定义子类型继承父类型
+    class Plane extends Flyer{
+      constructor(x,y,score){
+        super(x,y);//必须写在子类型属性之前
+        this.score=score;
+      }
+      getScore(){
+        console.log(`击落敌机得${this.score}分`)
+      }
+    }
+    var p1=new Plane(50,100,5);
+    console.log(p1);
+    p1.fly();
+    p1.getScore();
+    //模仿Plane，自己定义一个San类型继承Flyer
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //function add(a,b){//除了会被声明提前之外，和var fun=function()无差别
+  //var add=function(a,b){ return a+b; } //function其实是new Function()的简写
+    var add=new Function("a","b","return a+b");//最底层本质
+    console.log(add(3,5));//8
+    var sum=add;
+    //sum=function(a,b){return a+b};
+    console.log(sum(3,5));//8
+
+    var a=function(){ console.log(1) };//new Function() 被分配内存地址
+    var b=function(){ console.log(1) };//new Function() 被分配另一个新的内存地址
+    console.log(a==b);//false
+    //==比较两个对象时，不再隐式转换，而直接比较两个对象的地址是否相同。
+  </script>
+</body>
+</html>

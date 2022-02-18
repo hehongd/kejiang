@@ -1,0 +1,34 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>DOM Tree</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<span id="s1">Hello</span>
+		<h1>标题一</h1>
+		<script>
+			//前四个不需要查找，就可直接获得
+			console.log(document);
+			console.log(document.documentElement);//<html>
+			console.log(document.head);//<head>
+			console.log(document.body);//<body>
+			
+			//想获得body下第一个直接子元素span
+			//错误: firstChild会受看不见的空字符干扰
+			//var span=document.body.firstChild;
+			//正确:
+			var span=document.body.firstElementChild;
+			console.log(span);
+			//想访问span的下一个兄弟元素h1
+			var h1=span.nextElementSibling
+			console.log(h1);
+			//h1的前一个兄弟是不是span
+			console.log(h1.previousElementSibling==span);//true
+			//访问body下所有直接子元素: 
+			console.log(document.body.children);
+			//验证h1的爹是不是body
+			console.log(h1.parentElement==document.body);//true
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";
+
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+      //没有return，所以没有返回值，相当于undefined
+    }
+    //本来构造函数应该用new调用
+    var lilei=new Student("Li Lei",11);
+    console.log(lilei);
+    //但是不小心忘记写new了
+    var hmm=Student("Han Meimei",12);
+          //undefined.sname=sname; //报错:
+          //Cannot set property 'sname' of undefined
+          //不能   设置  属性     sname  的  undefined
+          //不能设置undefined的sname属性
+          //undefined.sage=sage; //报错
+    console.log(hmm);//undefined
+    //console.log(sname, sage);//在全局直接输出本该保存到对象内的属性，却可以直接使用！——全局污染！
+  </script>
+</body>
+</html>

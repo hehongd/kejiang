@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      h1{
+        background-color:red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="h1" style="color:yellow">Welcome</h1>
+    <p>welcome to my web site</p>
+    <script>
+      var h1=document.getElementById("h1");
+      //想获得h1的字体颜色，背景颜色和字体大小
+      //错误：用h1.style方式
+      // console.log(h1.style.color);//内联
+      // console.log(h1.style.backgroundColor);//内部样式表
+      // console.log(h1.style.fontSize);//浏览器默认样式表
+      //正确: getComputedStyle(h1)
+      var style=getComputedStyle(h1);
+      console.log(style);//包含所有css属性,太大
+      console.log(style.color);//内联
+      console.log(style.backgroundColor);//内部样式表
+      console.log(style.fontSize);//浏览器默认样式表
+      //想通过计算后的样式对象style，修改某个css属性
+      style.fontSize="90px";//报错！
+  //Failed to set the 'font-size' property on 'CSSStyleDeclaration': 
+  // 不能     设置      font-size   属性    在   xxx对象中
+  //These styles are computed, and therefore the 'font-size' property is read-only.
+  //这些   样式  是   计算后的       因此         font-size    属性
+  //是 只读的
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 30%;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="list">
+    <li>尼康(234)</li>
+    <li>佳能(22)</li>
+    <li>索尼(932)</li>
+    <li>宾得(11)</li>
+    <li>爱国者(3234)</li>
+    <li>欧巴(32)</li>
+    <li>海鸥(2334)</li>
+    <li>卡西欧(334)</li>
+    <li>三星(834)</li>
+    <li>松下(234)</li>
+    <li>其它品牌(2343)</li>
+  </ul>
+
+  <button data-toggle="brandlist">精简显示品牌</button>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  //DOM 4步
+  //1. 查找触发事件的元素
+  //本例中: 点data-toggle="brandlist"的按钮
+  $("[data-toggle='brandlist']")
+  //2. 绑定事件处理函数
+  .click(function(){
+    //3. 查找要修改的元素
+    //本例中: 要修改ul下大于4位置且不是最后一个的li
+    $("ul>li:gt(4):not(:last)")
+    //4. 修改元素
+    //本例中: 切换这几个li的显示隐藏
+    .toggle();//在display:none和display:block之间来回切换
+    //修改当前按钮的文字: 
+    var $btn=$(this);
+    //如果当前按钮的文字是: 精简显示品牌，就改为显示全部品牌
+    //否则如果当前按钮的文字是显示全部品牌，就改为精简显示品牌
+    if($btn.html()=="精简显示品牌"){
+      $btn.html("显示全部品牌");
+    }else{
+      $btn.html("精简显示品牌");
+    }
+  })
+  </script>
+</body>
+
+</html>

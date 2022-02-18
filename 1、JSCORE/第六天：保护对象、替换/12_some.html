@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var arr1=[1,2,3,4,5]; //true
+  var arr2=[1,3,5,3,1]; //false
+  //想判断哪个数组包含偶数
+  var result1=arr1.some(function(elem,i,arr){
+    console.log(`arr1.some()自动执行一次回调函数: elem=${elem},i=${i},arr=${arr},本次判断结果: ${elem%2==0}`);
+    //如果当前元素是偶数就返回true
+    return elem%2==0
+  });
+  var result2=arr2.some(function(elem,i,arr){
+    console.log(`arr2.some()自动执行一次回调函数: elem=${elem},i=${i},arr=${arr},本次判断结果: ${elem%2==0}`);
+    //如果当前元素是偶数就返回true
+    return elem%2==0
+  });
+  console.log(result1,result2);
+  </script>
+</body>
+</html>

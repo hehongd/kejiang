@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //只有父对象，没有构造函数
+    var father={
+      bal:100000000000,
+      car:"infiniti"
+    }
+    //也想临时创建子对象继承father
+    var lilei=Object.create(father,{
+      //不能直接写属性值，必须按照defineProperties的格式写
+      sname:{
+        value:"Li Lei",
+        writable:true,
+        enumerable:true
+      },
+      sage:{
+        value:11,
+        writable:true,
+        enumerable:true
+      }
+    });//3件事
+    Object.seal(lilei);//密封
+    //1. 创建一个新的空对象
+    //2. 让新的空对象继承father对象
+    //3. 为新对象添加自有属性
+    console.log(lilei);
+    console.log(lilei.sname, lilei.sage, lilei.bal, lilei.car);
+  </script>
+</body>
+</html>

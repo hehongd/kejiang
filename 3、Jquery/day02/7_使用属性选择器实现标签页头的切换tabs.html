@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .tabs {
+      list-style: none;
+      padding: 0
+    }
+
+    .tabs a {
+      text-decoration: none;
+      color: #000;
+      padding: 6px 12px;
+      display: inline-block;
+    }
+
+    .tabs>li {
+      float: left;
+      border-bottom: 1px solid #000;
+    }
+
+    .tabs>.active {
+      border: 1px solid #000;
+      border-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>使用属性选择器实现标签页头的切换</h1>
+  <ul class="tabs">
+    <li class="active"><a data-toggle="tab" href="#">十元套餐</a></li>
+    <li><a data-toggle="tab" href="#">二十元套餐</a></li>
+    <li><a data-toggle="tab" href="#">三十元套餐</a></li>
+  </ul>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //DOM 4步
+    //1 查找触发事件的元素
+    //本例中: 用户点有data-toggle属性，且属性值为tab的元素触发变化
+    $("[data-toggle=tab]")
+    //2. 绑定事件处理函数
+    //本例中: 单击触发变化
+    .click(function(){
+      //3. 查找要修改的元素
+      //4. 修改元素
+      //本例中: 先给当前a的父元素li加active class，再去掉当前a的父元素里的兄弟身上的active class
+      $(this).parent()
+      //  a   当前li    
+              .addClass("active")//本来不需要返回值
+      //jQuery要求addClass必须返回.前的主语
+      //return $当前li
+      //addClass的返回值，刚巧和下一个操作的.前的主语一致！
+              .siblings().removeClass("active");
+      //        其它li
+      //jquery链式操作！
+    })
+  </script>
+</body>
+
+</html>

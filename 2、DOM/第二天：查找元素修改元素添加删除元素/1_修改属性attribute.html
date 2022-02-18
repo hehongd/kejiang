@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="a1" href="http://tmooc.cn" target="_blank">go to tmooc</a>
+    <script>
+      var a1=document.getElementById("a1");
+      //想获得a1的href属性值
+      var href=a1.getAttribute("href");
+      console.log(href); //"http://tmooc.cn"
+      //想修改a1的title属性值
+      a1.setAttribute("title","欢迎访问tmooc");
+      //想判断a1是否包含target属性
+      var bool=a1.hasAttribute("target");
+      console.log(bool);//true
+      //移除a1的target属性
+      a1.removeAttribute("target");
+      //想判断a1是否包含target属性
+      var bool=a1.hasAttribute("target");
+      console.log(bool);//false
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //定义一个计算薪资的函数
+    //                    收集除第一个ename之外剩余的其它实参值
+    function jisuan(ename,...arr){
+      //因为arr是一个纯正的数组
+      var total=arr.reduce(function(捐款箱,elem){
+        return 捐款箱+elem
+      },0);
+      console.log(`${ename}的总工资是：${total}`)
+    }
+    jisuan("Li Lei",10000,2000);
+    jisuan("Han Meimei",3000,4000,5000,1000)
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //定义一种学生类型，规定所有学生的统一属性结构，要求所有学生都会做自我介绍
+    class Student{
+      //回顾: 一种类型都包括: 构造函数和原型对象
+      //先定义构造函数:
+      constructor(sname, sage){
+        this.sname=sname;
+        this.sage=sage;
+      }
+      //再向原型对象中添加共有方法
+      intr(){
+        console.log(`I'm ${this.sname},I'm ${this.sage}`)
+      }
+      //错误: className会成为每个子对象的自有属性
+      //className="初一2班"
+    }
+
+    //为所有子对象设置共有属性
+    Student.prototype.className="初一2班";
+
+    //class就是新瓶装旧酒，底层还是以前的构造函数和原型对象，所以class的用法和构造函数的用法完全一样！
+    //想创建一个学生对象lilei
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han Meimei",12);
+    lilei.intr();
+    console.log(lilei);
+    console.log(hmm);
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script>
+    //向vue大家庭中添加一个新指令my-focus
+    Vue.directive("my-focus",{ //因为HTML语法不区分大小写，所以如果名字由多个单词组成，强烈推荐用-分割，而不用驼峰命名
+      //当当前元素被添加到页面上之后，当前元素自定获得焦点
+      inserted(domElem){
+        domElem.focus(); //复习DOM中四天上午
+      }
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!--希望文本框input在页面加载时就自动获得焦点
+      1. vue官方没有定义让元素自动获得焦点的指令
+      2. 的确可以写文本框.focus()，但是vue中没地方写DOM代
+      唯一可以名正言顺写DOM代码的地方——自定义指令中-->
+    <input v-my-focus><button>百度一下</button>
+  </div>
+  <script>
+    new Vue({
+      el:"#app"
+    })
+  </script>
+</body>
+</html>

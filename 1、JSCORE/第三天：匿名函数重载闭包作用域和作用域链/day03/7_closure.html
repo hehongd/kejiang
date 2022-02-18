@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //需求: 定义一个函数帮小孩儿管理压岁钱
+  //假设小孩儿有1000块钱压岁钱
+  //1. 用外层函数包裹要保护的变量和内层函数
+  function parent(){//父母帮小孩儿保管压岁钱
+    var total=1000;//——压岁钱
+    //2. 外层函数将内层函数return到外层函数外部，让外部可以使用
+    return function(money){//——小孩儿
+      //从总钱数中-本次花的钱
+      total-=money;
+      //输出花了多少，还剩多少余额
+      console.log(`花了${money}，还剩${total}`)
+    }
+  }
+  //3. 外部要想使用内层函数，必须先调用外层函数，来获得返回的内层函数保存到变量中，才能反复使用！
+  var pay=parent();
+  //pay:function(money){ ... }
+  //测试:
+  pay(100);
+  total=0;//尝试篡改total
+  pay(100);
+  pay(100);
+  </script>
+</body>
+</html>

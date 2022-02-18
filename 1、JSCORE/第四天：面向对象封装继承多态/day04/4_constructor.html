@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //想创建两个学生:
+    //lilei: sname: Lilei, sage: 11, 会自我介绍: I'm Li Lei, I'm 11
+    //hmm: sname: Han Meimei, sage: 12, 会自我介绍: I'm Han Meimei, I'm 12
+    //总结: 所有学生都有sname和sage两个属性，所有学生都有intr()方法做自我介绍
+    //所以: 
+    function Student(sname, sage){
+      this.sname=sname;
+      this.sage=sage;
+      this.intr=function(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+      }
+    }
+    //用new调用Student()构造函数，创建lilei对象，并将李磊的属性值保存进将要创建的lilei对象中
+    var lilei=new Student("Li Lei",11);
+    //用new调用Student()构造函数，创建hmm对象，并将韩梅梅的属性值保存进将要创建的hmm对象中
+    var hmm=new Student("Han meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <h1>jQuery/$工厂函数</h1>
+    <button id="btn1">click me(0)</button>
+    <script>
+        //DOM 4步
+        //1. 查找触发事件的元素
+        //本例中: 点击id为btn1的按钮触发变化，所以查找id为btn1的元素
+        var btn = document.getElementById("btn1");
+        //2. 绑定事件处理函数
+        //本例中: 单击按钮触发事件，所以为按钮绑定单击事件
+        btn.onclick = function() {
+            //3. 查找要修改的元素
+            //本例中: 单击按钮时，就是要修改自己: this
+            //4. 修改元素
+            //4.1 先取出当前按钮的内容中()中的数量，转为整数
+            var n = parseInt(
+                this.innerHTML
+                //    "click me(10000)"
+                //     012345678901234
+                //              |    |
+                .slice(9, -1) //复习第一阶段slice函数用法
+                //       "10000"
+            );
+            //4.2 将数量+1
+            n++;
+            //4.3 将新数量拼到()中，放回当前按钮的内容中
+            this.innerHTML = `click me(${n})`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lilei={//对象的{}不是作用域！
+      sname:"Li Lei",
+      friends:["亮亮","然然","东东"],
+      //intr:function(){
+      intr(){//ES6简写,看今晚作业2
+        //遍历lilei自己的friends数组中每个好朋友
+        this.friends.forEach(
+          elem=>{//回调函数——会被主函数反复调用——不止调用一次
+            console.log(this);//window,但是我想让this->lilei
+            //输出LiLei 认识 xxx
+            console.log(`${this.sname} 认识 ${elem}`);
+          }
+        )
+      }
+    }
+    lilei.intr();
+
+    function liang(帮别人做一件事){
+      console.log(`亮哥自己先吃完饭`);
+/*  */帮别人做一件事();//因为回调函数在主函数内调用时，前边既没有.，又没有new，所以通常回调函数中的this只能默认指window
+    }
+    //然哥想让liang帮忙带一屉包子
+    liang(function(){
+      console.log(this); 
+      console.log(`帮然哥带包子`) 
+    });
+  </script>
+</body>
+</html>

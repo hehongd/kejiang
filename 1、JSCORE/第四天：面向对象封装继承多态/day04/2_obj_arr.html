@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var lilei={ //一个对象lilei
+      ename:"Li Lei",
+      eage:11
+    };
+    var ym=[]; //一个关联数组ym
+    ym["ename"]="杨幂";
+    ym["eage"]=30;
+    //输出对象和关联数组在内存中的存储结构，比较相似点
+    console.log(lilei);
+    console.log(ym);
+    //想访问lilei的ename属性
+    console.log(lilei["ename"], lilei.ename)
+    //想访问ym的ename属性
+    console.log(ym["ename"], ym.ename)
+    //想给李磊和ym都添加一个新属性:班级className 
+    lilei["className"]="初一2班";
+    ym["className"]="表演系2班";
+    //再次输出两个对象，观察新属性是否强行添加成功
+    console.log(lilei);
+    console.log(ym);
+    //想获取李磊和ym的className属性
+    console.log(lilei.className, ym.className);
+    //想获得李磊和ym的不存在的salary属性
+    console.log(lilei.salary, ym.salary);
+    //分别遍历lilei和ym中都有哪些属性，属性值分别是什么: 
+    for(var a in lilei){
+      console.log(`属性名:${a}`)
+      console.log(`属性值: ${lilei[a]}`)
+    //console.log(`属性值:${lilei.a}`) //错误
+    //a是一个循环变量，每一轮的值都不一样，都在不停变化
+    //lilei.a会被翻译为lilei["a"]，如果变量a被包在""中，就不再是变量了。而是一个普通的写死的属性名"a"了！也就无法变化了。
+    //如果lilei[a]，每一轮循环中，lilei[a]，分别会变成lilei["ename"]、lilei["eage"]、lilei["className"]，因为不加""的a是变量，可以不断变化。
+    }
+    for(var b in ym){
+      console.log(`属性名:${b}`);
+      console.log(`属性值: ${ym[b]}`)
+    //console.log(`属性值:${ym.b}`) //错误
+    //b也是一个循环变量，每一轮的值都不一样，都在不停变化
+    //ym.b会被翻译为ym["b"]，如果变量b被""包裹，就不再是变量了。而是一个普通的写死的属性名"b"，也就无法发生变化了
+    //如果ym[b]，每一轮循环， ym[b]，分别会变为ym["ename"]、ym["eage"]、ym["className"]。因为不加""的b是变量，可以不断变化。
+    }
+  </script>
+</body>
+</html>

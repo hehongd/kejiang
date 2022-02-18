@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/axios.min.js"></script>
+</head>
+<body>
+  <script>
+    //配置所有接口相同的基础域名路径部分
+    axios.defaults.baseURL="http://xzserver.applinzi.com";
+    axios.get("/index")
+    .then(function(result){
+      console.log(result.data);
+    });
+    axios.get("/details",{
+      params:{ lid:5 } //自动翻译为?lid=5，添加到url结尾
+    }).then(function(result){
+      console.log(result.data);
+    });
+    axios.post(
+      "/users/signin",
+      "uname=dingding&upwd=123456"
+    ).then(function(result){
+      console.log(result.data);
+    });
+  </script>
+</body>
+</html>

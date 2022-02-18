@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //function add(a,b){
+    //var add=function(a,b){
+    var add=(a,b)=>//{
+      console.log(`${a}+${b}=${a+b}`)
+    //}
+    add(3,5);
+
+    var arr=[12,3,123,32,2,1];
+    //arr.sort(function(a,b){ return a-b; });
+    arr.sort((a,b)=>a-b)
+    console.log(arr);
+
+    var str="you can you up";
+    // str=str.replace(/\b[a-z]/g, function(keyword){
+    //   return keyword.toUpperCase();
+    // })
+    str=str.replace(/\b[a-z]/g,kw=>kw.toUpperCase())
+    console.log(str);
+
+    var arr=["亮亮","然然","东东"]
+    //arr.forEach(function(elem){
+    arr.forEach(elem=>/*{*/
+      console.log(`${elem} - 到`)
+    /*}*/);
+
+    var arr=[1,2,3,4,5];
+    // var arr2=arr.map(function(elem){
+    //   return elem*2;
+    // });
+    var arr2=arr.map(elem=>elem*2)
+    console.log(arr);
+    console.log(arr2);
+
+    var arr=[1,2,3,4,5];
+    // var sum=arr.reduce(function(box,elem){
+    //   return box+elem
+    // },0);//从0开始累加
+    var sum=arr.reduce((box,elem)=>box+elem,0)
+    console.log(sum);
+
+    //(function(){
+    (()=>{
+      console.log("我是匿名函数自调");
+      console.log(`当前系统时间:${new Date().toLocaleString()}`)
+    })();
+
+    var t=5;
+    //var timer=setInterval(function(){
+    var timer=setInterval(()=>{
+      if(t>0){//如果倒计时没结束
+        console.log(t);//就输出倒计时
+        t--;//倒计时-1
+      }else{//否则如果倒计时已经结束
+        console.log(`boom!!!`);//就爆炸
+        clearInterval(timer);//并停止定时器
+      }
+    },1000)
+  </script>
+</body>
+</html>

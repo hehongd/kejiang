@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //错误: 
+    // var add=()=>{
+    //   var sum=0;
+    //   for(var elem of arguments){//报错: arguments is not defined
+    //     sum+=elem
+    //   }
+    //   return sum;
+    // }
+    //正确: 
+    // var add=(...arr)=>{
+    //   //arr:[1,2,3]
+    //   var sum=0;
+    //   for(var value of arr){
+    //     sum+=value
+    //   }
+    //   return sum;
+    // }
+    //正确: 证明arr是一个纯正的数组
+    // var add=(...arr)=>{
+    //                  数组家的
+    //   var result=arr.reduce(function(捐款箱,elem){
+    //     return 捐款箱+elem
+    //   },0);
+    //   return result;
+    // }
+    //正确: 终极简写，时髦！—— 学有余力的同学
+    var add=(...arr)=>arr.reduce((捐款箱,elem)=>捐款箱+elem,0);
+    console.log(add(1,2,3));//6
+    console.log(add(1,2,3,4,5));//15
+  </script>
+</body>
+</html>

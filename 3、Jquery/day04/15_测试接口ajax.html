@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+    <script>
+        //想从东哥新浪云服务器的/index接口获得学子商城首页4个商品
+        //服务器端接口地址: http://xzserver.applinzi.com/index
+        $.ajax({
+            url: "http://xzserver.applinzi.com/index",
+            type: "get",
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+            }
+        });
+        //想从东哥新浪云服务器的/details接口获得5号商品的详细信息
+        //服务器端接口地址: 
+        //  http://xzserver.applinzi.com/details
+        //  参数: lid=商品编号
+        $.ajax({
+            url: "http://xzserver.applinzi.com/details",
+            type: "get",
+            data: {
+                lid: 5
+            },
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+            }
+        });
+        //想利用东哥新浪云服务器的/signin接口登录学子商城
+        //服务器端接口地址: 
+        //http://xzserver.applinzi.com/users/signin
+        //post类型: 
+        //参数: uname=用户名&upwd=密码
+        //            dingding   123456
+        $.ajax({
+                url: "http://xzserver.applinzi.com/users/signin",
+                type: "post",
+                data: {
+                    uname: "dingding",
+                    upwd: "123456"
+                },
+                dataType: "json",
+                success: function(result) {
+                    //result两种情况:
+                    //如果用户名密码正确: {ok:1, uname:"dingding"}
+                    //如果用户名密码错误: {ok:0, msg:"用户名或密码不正确"}
+                    console.log(result);
+                    if (result.ok == 1) {
+                        document.write(`<h1>Welcome ${result.uname}</h1>`)
+                    } else {
+                        document.write(`<h1 style="color:red">${result.msg}</h1>`)
+                    }
+                }
+            })
+            //public/js/header.js
+        $(function() {
+                $.ajax({
+                    url: "header.html",
+                    type: "get",
+                    success: function(result) {
+                        $(result).replaceAll("#header");
+                        $(`<link rel="stylesheet" href="css/header.css">`).appendedTo("head")
+                    }
+                });
+            })
+            //在index.html等任何一个需要页头的页面底部引入<script src="js/header.js">
+    </script>
+</body>
+
+</html>

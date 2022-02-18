@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+</head>
+<body>
+  <!--希望页面加载时，就加载学子商场首页的六个商品-->
+  <div id="app">
+    <ul>
+      <li v-for="(p,i) of products" :key="i">
+        {{p.title}} | ¥{{p.price}} | {{p.details}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    //配置
+    axios.defaults.baseURL="http://xzserver.applinzi.com";
+    var vm=new Vue({
+      el:"#app",
+      data:{
+        products:[]
+      },
+      methods:{
+      },
+      beforeCreate(){
+        console.log(`创建data:{}前自动触发`)
+      },
+      created(){
+        console.log(`创建data:{}后自动触发`)
+      },
+      beforeMount(){
+        console.log(`挂载页面元素和内容前自动触发`)
+      },
+      mounted(){
+        console.log(`挂载页面元素和内容后自动触发`)
+        //为了让.then()中的this和外部this保持一致，都指向当前new Vue()对象
+        axios.get("/index").then(result=>{
+          //想把请求回来的数据，保存到data中products变量上
+          this.products=result.data;
+        })
+      },
+      beforeUpdate(){
+        console.log(`修改data中的变量前自动触发`)
+      },
+      updated(){
+        console.log(`修改data中的变量后自动触发`)
+      },
+      beforeDestroy(){
+        console.log(`销毁当前组件前自动触发`)
+      },
+      destroyed(){
+        console.log(`销毁当前组件后自动触发`)
+      }
+    })
+    //在控制台中: vm.$destory()
+  </script>
+</body>
+</html>

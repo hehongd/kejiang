@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .score {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .score li {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #f00;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>请打分</h3>
+  <ul class="score">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  //回顾indexOf
+  var arr=["亮亮","然然","东东"];
+  //想查找然然的位置
+  var i=arr.indexOf("然然");
+  console.log(`然然在${i}位置`);
+  //获得当前单击的li在所有li中的位置i,i及其执行的都变为红色，i之后的都变为白色
+  //DOM 4步
+  //1. 查找触发事件的元素
+  //本例中: ul下的所有li都能单击
+  $("ul>li")
+  //2. 绑定事件处理函数
+  .click(function(){
+    //3. 查找要修改的元素
+    //4. 修改元素
+    //先获得当前点击的li在所有li中的下标位置i
+    var i=$("ul>li").index(this)
+    //再将<i+1位置的所有li背景变为黄色
+    //错误: i是变量！直接放在字符串中，就不是变量了！
+    //$(`ul>li:lt(i+1)`)
+    //正确: 用模板字符串将变量i拼接到选择器中
+    $(`ul>li:lt(${i+1})`).css("background-color","yellow");
+    //再见>i位置的所有li背景变为白色
+    $(`ul>li:gt(${i})`).css("background-color","#fff");
+  })
+  </script>
+</body>
+
+</html>

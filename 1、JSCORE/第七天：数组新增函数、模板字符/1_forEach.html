@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr=["亮亮","然然","东东"];
+    //依次点名，点到谁，谁喊到！
+    //用for: 无进一步简化的可能了
+    // for(var i=0;i<arr.length;i++){
+    //   alert(`${arr[i]} - 到！`);
+    // }
+    //用arr.forEach():
+    // arr.forEach(function(elem,i,arr){
+    //   console.log(`forEach自动调用了一次回调函数, elem=${elem}, i=${i}, arr=${arr}`);
+    //   alert(`${elem} - 到！`);
+    // })
+    //arr.forEach(function(elem,i,arr){
+    //回调函数内容中本次不需要i和arr，可省略
+    //arr.forEach(function(elem){
+    //提前尝鲜: 箭头函数=>
+    // arr.forEach((elem)=>{
+    //   alert(`${elem} - 到！`);
+    // })
+    //箭头函数可以更简化: 如果只有一个形参可省略()，如果只有一句话，可省略{}
+    arr.forEach(elem=>alert(`${elem} - 到！`))
+    //总结: forEach好处是可以和箭头函数配合有进一步简化的可能！
+    //关于箭头函数，先不要问为什么！后边再详细讲！
+  </script>
+</body>
+</html>

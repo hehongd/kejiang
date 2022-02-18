@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //复制一个数组
+    var arr1=[1,2,3];
+    var arr2=[...arr1];
+    console.log(arr2);
+    console.log(arr1==arr2);//false
+
+    //复制一个对象
+    var lilei={
+      sname:"Li Lei",
+      sage:11
+    }
+    var lilei2={...lilei};
+    console.log(lilei2)
+    console.log(lilei==lilei2);//false
+    
+    //合并两个数组
+    var arr1=[1,2,3];
+    var arr2=[6,7,8];
+    var arr3=[...arr1,4,5,...arr2];
+    console.log(arr3);
+
+    //合并两个对象:
+    var lilei={
+      sname:"Li Lei",
+      sage:11
+    };
+    var lilei2={
+      className:"初一2班",
+      intr:function(){
+        console.log(`I'm Li Lei, I'm 11`)
+      }
+    };
+    var lilei3={
+      ...lilei,
+      phone:"iPhoneX",
+      ...lilei2
+    }
+    console.log(lilei3);
+  </script>
+</body>
+</html>

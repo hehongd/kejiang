@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var email="zhangdong@tedu.cn";
+    //          用户名   |   域名
+    //希望获得电子邮件中的用户名和域名
+    //按@切割电子邮件
+    var arr=email.split("@");
+    console.log(arr);
+    var uname=arr[0];
+    var domain=arr[1];
+
+    var str="you can you up";
+    //获得一个英文句子中单词的列表
+    //按空格切割字符串str
+    var words=str.split(" ");
+    console.log(words);
+
+    var str="you   can    you  up";
+    //按一个以上的连续空格来切割
+    var words=str.split(/\s+/);
+    console.log(words);
+
+    //回顾:
+    var arr=[1,2,3];
+    arr.reverse();
+    console.log(arr);
+
+    //鄙视: 翻转一个字符串:
+    var str="hello";
+    //str.reverse();//报错: str.reverse不是一个函数
+    //先把str打散为字符数组
+    var arr=str.split("");
+    console.log(arr);
+    //调用数组家的函数翻转数组
+    arr.reverse();
+    //要将翻转后的字符数组再拼接回字符串
+    //str=arr.toString();//错误: toString()只能用逗号连接每个字
+    str=arr.join("");//无缝拼接
+    console.log(str);//olleh 
+  </script>
+</body>
+</html>

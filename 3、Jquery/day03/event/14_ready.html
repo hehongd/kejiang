@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> new document </title>
+	<meta charset="utf-8">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="14_ready.js">
+		//$(function(){
+			//$("#btn").click(function(){ ... })
+		//});
+		//window.onload=function(){ ... }
+	</script>
+</head>
+
+<body>
+	<button id="btn">click me</button>
+</body>
+
+</html>
+<!--仅DOM内容: HTML+JS 加载完先触发DOMContentLoaded，也就是$(function(){...}) 此时，页面中已经有HTML内容，所有事件可以正常绑定到元素上-->
+<!--然后,当所有页面内容(HTML+JS+CSS+图片)加载完成后才自动执行window.onload() 稍晚一些-->

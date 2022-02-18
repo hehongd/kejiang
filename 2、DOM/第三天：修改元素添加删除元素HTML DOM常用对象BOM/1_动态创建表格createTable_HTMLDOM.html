@@ -1,0 +1,91 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>动态创建表格</title>
+    <meta charset="utf-8" />
+    <style>
+      table{width:600px; border-collapse:collapse;
+        text-align:center;
+      }
+      td,th{border:1px solid #ccc}
+    </style>
+  </head>
+  <body>
+    <div id="data">
+      <table>
+        <thead>
+          <tr>
+            <th>员工姓名</th>
+            <th>薪资</th>
+            <th>员工年龄</th>
+            <th>删除</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <script>
+    var json=[
+      {"ename":"Tom", "salary":11000, "age":25},
+      {"ename":"John", "salary":13000, "age":28},
+      {"ename":"Mary", "salary":12000, "age":25}
+    ];
+    //先创建一个tbody元素
+    var tbody=document.createElement("tbody");
+    //暂时不要将tbody元素追加到table中
+
+    //查找table对象
+    var table=document.querySelector("#data>table");
+
+    //遍历json数组中每个员工对象
+    for(var emp of json){
+      //每遍历一个员工对象，就创建一个tr，将tr追加到tbody下
+      // var tr=document.createElement("tr");
+      // tbody.appendChild(tr);
+      var tr=tbody.insertRow();//末尾追加新行
+            //tbody.insertRow(0); //始终在开头插入新行
+      //遍历当前emp对象中每个属性值
+      for(var key in emp){
+        //每遍历一个属性值，就创建一个td，并设置td的内容为当前属性值，最后将td追加到当前tr对象中
+        // var td=document.createElement("td");
+        // tr.appendChild(td);
+        var td=tr.insertCell();
+        td.innerHTML=emp[key];//因为key是变量，所以不加""
+      }
+      //当为当前行添加完数据格之后，再额外添加一个新格
+      var td=tr.insertCell();
+      //创建一个新按钮，并将新函数追加到td内容中
+      var btn=document.createElement("button");
+      btn.innerHTML="×";
+      td.appendChild(btn);
+      //为按钮绑定单击事件处理函数
+      btn.onclick=function(){
+        //测试:点哪个按钮，让当前按钮变成❀
+        //this.innerHTML="❀";
+        //查找要修改的元素
+        //本例中: 点按钮要删除当前按钮所在的行
+        var tr=this.parentElement.parentElement;
+            //  btn     td            tr
+        //修改元素
+        //删除这类操作，都是危险操作，所以在正式删除前都要再跟用户确认一下是否真的继续删除！
+        //如何跟用户确认？弹出确认框，请用户选择是否继续
+        //为了让提示更有针对性，对用户更有帮助，应该加入标志性的员工姓名
+        //先获得当前行中第一个格里保存的人名
+        var ename=tr.cells[0].innerHTML;
+                    // td      td的内容
+        var result=confirm(`是否继续删除 ${ename} 吗？`);
+        //如果用户点的是确认按钮，确认框整体返回true，说明用户想继续删除行
+        if(result==true){
+          //本例中: 最终要执行的
+          table.deleteRow(tr.rowIndex);
+          //因为前边已经查找过table元素了，所以table可以直接使用！
+        }//否则如果用户点的是取消，确认框整体返回false，条件不满足，什么也不干！
+      }
+    }
+
+    //等tbody中所有内容都加载完了，最后一次性将整个tbody追加到DOM树
+    table.appendChild(tbody);
+    //浏览器只需要一次重排重绘
+    //对效果没有影响，却极大的优化了页面加载效率！
+    </script>
+  </body>
+</html>

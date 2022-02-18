@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="a1" href="#">什么也不干！</a><br/>
+    <a href="javascript:;">什么也不干！</a>
+    <form>
+      用户名: <input name="uname"/><br/>
+      <!-- <input id="btnSubmit" type="submit"> -->
+      <!-- <button id="btnSubmit">提交</button> -->
+      <!-- <input type="button" value="提交"/> -->
+      <button type="button">提交</button>
+    </form>
+    <script>
+      var a1=document.getElementById("a1");
+      a1.onclick=function(e){
+        e.preventDefault();
+        alert("疼!")
+      }
+      var btnSubmit=document.getElementById("btnSubmit");
+      btnSubmit.onclick=function(e){
+        e.preventDefault();
+        alert("用ajax手动提交表单！")
+      }
+    </script>
+  </body>
+</html>

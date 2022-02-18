@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//要定义一个点套餐的函数
+//一个套餐中包含三种商品:
+//主食: zhushi 默认: 香辣鸡腿堡
+//小吃: xiaochi 默认: 薯条
+//饮料: yinliao 默认: 可乐
+// function order({
+// //配对儿   接收实参值
+// //属性名 : 形参
+//   zhushi:zhushi, //不支持默认值
+//   xiaochi:xiaochi, //不支持默认值
+//   yinliao:yinliao //不支持默认值
+// }){
+function order({
+//一个名字两用: 既当做配对的属性名，又当做接收实参值的形参变量名
+  zhushi="香辣鸡腿堡",
+  xiaochi="薯条",
+  yinliao="可乐",
+}){
+  console.log(`
+    您点的套餐是:
+      主食:${zhushi},
+      小吃:${xiaochi},
+      饮料:${yinliao}
+  `)
+}
+//第一个用户: 香辣鸡腿堡， 薯条， 可乐
+order({
+  zhushi:"香辣鸡腿堡",
+  xiaochi:"薯条",
+  yinliao:"可乐"
+})
+//第二个用户着急赶火车，只想要默认的套餐
+order({});
+//第三个用户: 只想换主食: 奥尔良烤腿堡，小吃和饮料保持
+order({ zhushi:"奥尔良烤腿堡"});
+//第四个用户: 想换主食和小吃: 巨无霸和鸡块, 饮料保持默认
+order({
+  zhushi:"巨无霸",
+  xiaochi:"鸡块"
+});
+
+//第五个用户: 只想换小吃为辣翅，主食和饮料保持默认！
+order({
+  xiaochi:"辣翅"
+});
+//第六个用户: 只想换饮料为奶茶，主食和小吃保持默认！
+order({
+  yinliao:"奶茶"
+});
+//第七个用户: 想换小吃和饮料为土豆泥和红茶，主食保持不变！
+order({
+  xiaochi:"土豆泥",
+  yinliao:"红茶"
+})
+</script>
+</body>
+</html>

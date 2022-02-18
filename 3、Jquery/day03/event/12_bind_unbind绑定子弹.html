@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> new document </title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1>事件绑定</h1>
+	<button id="btn1">发射子弹</button>
+	<button id="btn2">获得奖励</button>
+	<button id="btn3">失去奖励</button>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+	//开局: 点击btn1，发射普通子弹
+	//btn1.addEventListener("click",function(){ ... })
+	//           ||
+	//$("#btn1").on("click",function(){
+	//           ||
+	$("#btn1").click(function(){
+		console.log(`发射普通子弹......`)
+	})
+	//因为发射导弹的处理函数有可能被移除，所以应该用有名称的函数
+	function shoot2(){
+		alert("发射跟踪导弹=>=>=>")
+	}
+	//点btn2，可以给btn1多添加一种跟踪导弹
+	//$("#btn2").on("click",function(){
+	//           ||
+	$("#btn2").click(function(){
+		//btn1.addEventListener("click",shoot2)
+		//           ||
+		//$("#btn1").on("click",shoot2)
+		//           ||
+		$("#btn1").click(shoot2)
+	})
+	//点btn3, 可以从btn1上移除跟踪导弹
+	//$("#btn3").on("click",function(){
+	//           ||
+	$("#btn3").click(function(){
+		//btn1.removeEventListener("click",shoot2)
+		//         ||
+		$("#btn1").off("click",shoot2)
+	})
+	</script>
+</body>
+
+</html>

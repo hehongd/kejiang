@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //鄙视: 定义函数去掉字符串开头的和结尾的空字符
+  //       修剪 字符串开头的空字符
+  function trimLeft(str){
+    return str.replace(/^\s+/,"");
+  }
+  //       修剪 字符串结尾的空字符
+  function trimRight(str){
+    return str.replace(/\s+$/,"");
+  }
+  //       修剪 字符串开头和结尾的空字符
+  function trim(str){
+    return str.replace(/^\s+|\s+$/g,"")
+  }
+  //测试: 
+  var str="    zhang    dong    ";
+  console.log(trimLeft(str));//"zhang    dong    "
+  console.log(trimRight(str));//"    zhang    dong"
+  console.log(trim(str));//"zhang    dong"
+
+  //ES5/ES6: 内置了,不用自定义可直接使用！
+  console.log(str.trimLeft());//"zhang    dong    "
+  console.log(str.trimRight());//"    zhang    dong"
+  console.log(str.trim());//"zhang    dong"
+  </script>
+</body>
+</html>

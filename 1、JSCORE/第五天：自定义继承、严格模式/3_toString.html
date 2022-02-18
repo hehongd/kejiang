@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var lilei={//new Object()
+    //   sname: "Li Lei",
+    //   sage:11,
+    //   //只给李磊重写toString()方法
+    //   toString:function(){
+    //     return `{ sname: ${this.sname}, sage: ${this.sage} }`
+    //   }
+    // }
+    function Student(sname, sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+
+    //如果希望将来所有学生都有好用的toString(),则toString应该放在Student类型的原型对象中
+    Student.prototype.toString=function(){
+      return `{ sname: ${this.sname}, sage: ${this.sage} }`;
+            //格式可以自己随便改！
+    }
+
+    var lilei=new Student("Li Lei", 11);
+    var hmm=new Student("Han Meimei",12);
+    console.log(lilei.toString());
+    console.log(hmm.toString());
+
+    var arr=[1,2,3]; //new Array()
+    var now=new Date(); //new Date()
+    //对三个对象分别调用toString()——本意为了输出对象的内容
+    console.log(lilei.toString());
+    console.log(arr.toString());
+    console.log(now.toString())
+  </script>
+</body>
+</html>

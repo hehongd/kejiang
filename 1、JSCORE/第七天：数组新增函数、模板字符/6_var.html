@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var t=0;//定义一个全局变量，用来累加以下两个函数的执行时间
+    function fun1(){
+      console.log(`fun1耗时0.3s`);
+      t+=0.3;
+    }
+    function fun2(){//是作用域
+      //var t; //undefined
+      //从此: 因为fun2中有了局部变量t，就不会再用全局的t了
+
+      console.log(`fun2耗时0.8s`);
+      t+=0.8;//只是加在局部变量t上
+
+      //后期维护过程中，又新增了一段代码: 
+      if(false){//不是作用域   //根本不会执行
+        var t=new Date();
+        console.log(`当前时间: ${t.toLocaleString()}`)
+      }//虽然这段代码没有执行，但是却让原本正常执行的其它程序，发生错误！
+    }
+    fun1();
+    fun2();
+    console.log(`共耗时${t}s`);//1.1
+  </script>
+</body>
+</html>

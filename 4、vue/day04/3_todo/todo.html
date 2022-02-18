@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="todo-item.js">
+    //var todoItem={ ... }) //孙子
+  </script>
+  <script src="todo-add.js">
+    //var todoAdd={ ... }) //儿子
+  </script>
+  <script src="todo-list.js">
+    //var todoList={ ... }) //儿子
+  </script>
+  <script src="todo.js">
+    //Vue.component("todo",{ ... }) //父亲
+  </script>
+</head>
+<body>
+  <div id="app">
+    <todo></todo>
+    <!-- <todo-item></todo-item> 
+    报错: <todo-item> - did you register the component correctly
+    说明: 出了todo，就找不到todo-item了！只能在todo内使用！-->
+  </div>
+  <script>
+    new Vue({
+      el:"#app"
+    })
+  </script>
+</body>
+</html>

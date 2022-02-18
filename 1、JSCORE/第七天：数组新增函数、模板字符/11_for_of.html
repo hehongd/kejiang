@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr=["亮亮","然然","东东"];
+    //点名
+    for(var i=0;i<arr.length;i++){
+      console.log(`${arr[i]} - 到！`)
+    }
+    arr.forEach(elem=>console.log(`${elem} - 到！`));
+
+    for(var elem of arr){console.log(`${elem} - 到！`)}
+
+    //定义函数对任意个数字求和
+    function add(){
+      var sum=0;
+      //for(var i=0;i<arguments.length;i++){
+      for(var value of arguments){
+        sum+=value
+      }
+      return sum;
+    }
+    console.log(add(1,2,3))//6
+    console.log(add(1,2,3,4,5))//15
+
+    //为数组家添加一个对数组元素求和的共有方法sum
+    Array.prototype.sum=function(){
+      //this->将来的arr1, arr2
+      var total=0;
+      // for(var i=0;i<this.length;i++){
+      //   total+=this[i]
+      // }
+
+      //this.forEach(elem=>total+=elem);
+
+      for(var elem of this){
+        total+=elem;
+      }
+
+      //错误: in不止遍历当前对象的成员，还会自动沿着原型链向上继续遍历父对象中可用的成员
+                //in会依次取出in后对象中每个属性名保存到in前的变量key中
+      // for(var key in this){
+      //   total+=this[key]
+      // }
+
+      return total;
+    }
+    var arr1=[1,2,3];
+    var arr2=[1,2,3,4,5]
+    console.log(arr1.sum());
+    console.log(arr2.sum());
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!--希望根据pm25的数值，修改页面上的图片:
+      pm25<100，显示img/1.png
+      pm25<200, 显示img/2.png
+      pm25<300, 显示img/3.png
+      其余img/4.png
+    -->
+    <img v-if="pm25<100" src="img/1.png" alt="">
+    <img v-else-if="pm25<200" src="img/2.png" alt="">
+    <img v-else-if="pm25<300" src="img/3.png" alt="">
+    <img v-else src="img/4.png" alt="">
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      //因为页面上需要根据pm25的数值控制显示哪张图片，所以: 
+      data:{
+        pm25:360
+      }
+    })
+  </script>
+</body>
+</html>

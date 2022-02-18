@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="javascript:;" data-click="btn" data-count="5">click me</a>
+    <script>
+      //用属性选择器查找到带有data-click属性且属性值为btn上按钮元素
+      var btn=document.querySelector("[data-click=btn]");
+      console.log(btn);
+      //想将btn上count属性值+1
+      var count=parseInt(
+        btn.dataset.count
+        //btn.getAttribute("data-count")
+      );
+      count++;
+      //btn.setAttribute("data-count",count);
+      btn.dataset.count=count;
+    </script>
+  </body>
+</html>

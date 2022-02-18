@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!--1. 编写界面: -->
+    <div id="app">
+        <button id="btnMinus" @click="minus">-</button>
+        <span>{{n}}</span>
+        <button id="btnAdd" @click="add">+</button>
+    </div>
+    <script>
+        //2. 创建一个VUE对象充当快递员，自动送货
+        var vm = new Vue({
+            el: "#app",
+            //3. 在Vue对象内添加data属性和methods属性，分别保存页面所需的所有变量和事件处理函数
+            data: {
+                n: 0
+            },
+            methods: {
+                add() {
+                    this.n++;
+                },
+                minus() {
+                    if (this.n > 0) {
+                        this.n--
+                    };
+                }
+            }
+        });
+        console.log(vm);
+    </script>
+</body>
+
+</html>

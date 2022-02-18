@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!--因为要根据数组tasks的内容反复生成多个相同结构的li元素，所以应该在li元素上用v-for-->
+      <li v-for="(value,i) of tasks" :key="i">
+        <!--因为反复生成的内容中需要动态获得每个元素值和下标，所以，可以用of前的变量value和i用于绑定语法中动态生成内容-->
+        {{i+1}}. {{value}}
+      </li>
+    </ul>
+    <!--想遍历出lilei对象中每个属性的属性名和属性值-->
+    <ul>
+      <li v-for="(value,key) of lilei" :key="key">{{key}}: {{value}}</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        //有一个任务列表，希望展现到页面上
+        tasks:["吃饭","睡觉","打亮亮"],//.length=3
+        //       0      1      2
+        lilei:{
+          sname:"Li Lei",
+          sage:11,
+          className:"初一2班"
+        }
+      }
+    })
+  </script>
+</body>
+</html>

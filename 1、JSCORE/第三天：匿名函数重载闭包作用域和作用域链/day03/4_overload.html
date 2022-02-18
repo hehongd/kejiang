@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //定义一组支付的函数: 3种可能
+  //1. 手机支付: 不需要给收款员提供任何东西，就可手机支付
+  //2. 现金支付: 需要给收款员一笔现金
+  //3. 刷卡支付: 需要提供卡号和密码
+         //pay("6553 1234","123456");
+         //pay( 100         );
+         //pay(  ↓          );
+  function pay(             ){
+   //            ↓   ↓   ↓
+   //arguments{             }.length
+   //            0   1   2...
+    //如果没有传入参数，就手机支付
+    if(arguments.length==0){
+      console.log(`手机支付...`);
+    }else if(arguments.length==1){//如果传入一个参数，就现金支付
+      console.log(`现金支付...收您${arguments[0]}元`)
+    }else{//否则就刷卡支付
+      console.log(`刷卡支付...从您卡号${arguments[0]}，扣款成功!`)
+    }
+    //本例: 只考虑最多2个实参值的情况。
+  }
+
+  //想手机支付: 
+  pay();
+  //想现金支付
+  pay(100);
+  //想刷卡支付
+  pay("6553 1234","123456");
+  </script>
+</body>
+</html>

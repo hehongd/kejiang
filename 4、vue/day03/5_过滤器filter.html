@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script>
+    //因为项目中所有性别都需要先加工再显示
+    //将来                  {{ sex | sexFilter }}
+    //oldVal有几种可能：              0或1
+    //                               ↓  ↓
+    Vue.filter("sexFilter",function(oldVal){
+      return oldVal==1?"男":"女"
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    <h3>性别1:{{sex1}}</h3>
+    <h3>性别2:{{sex2}}</h3>
+    <h3>性别1:{{sex1==1?"男":"女"}}</h3>
+    <h3>性别2:{{sex2==1?"男":"女"}}</h3>
+    <h3>性别1:{{sex1 | sexFilter}}</h3>
+    <h3>性别2:{{sex2 | sexFilter}}</h3>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        sex1:1,
+        sex2:0
+      }
+    })
+  </script>
+</body>
+</html>

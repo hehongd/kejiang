@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Student(sname, sage){
+      this.sname=sname;
+      this.sage=sage;
+    }//prototype=>{  } //旧爹 空的
+
+    //输出构造函数旧的原型对象
+    console.log(Student.prototype);
+
+    //新爹  诱惑
+    var father={    
+      bal:100000000000000,
+      car:"infiniti"
+    }
+
+    //修改构造函数的原型对象为father
+    Student.prototype=father;
+    //输出构造函数新的原型对象
+    console.log(Student.prototype);
+
+    //创建子对象
+    var lilei=new Student("Li Lei",18);
+    var hmm=new Student("Han Meimei",19);
+
+    //输出李雷和韩梅梅的爹
+    console.log(lilei.__proto__);
+    console.log(hmm.__proto__);
+
+    //输出李雷和韩梅梅的银行存款和car
+    console.log(hmm.bal, hmm.car);
+    console.log(lilei.bal, lilei.car);
+  </script>
+</body>
+</html>

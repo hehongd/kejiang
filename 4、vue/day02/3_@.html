@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        #app>div {
+            width: 300px;
+            height: 100px;
+        }
+        
+        #app>div:hover {
+            box-shadow: 0 0 5px red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!--因为点击两个div都能喊疼，只不过div的名字不同，所以两个div可共用同一个事件处理函数，只不过传入不同的div名字作为实参即可！-->
+        <div id="d1" style="background-color:#aaf" @click="say('d1')"></div>
+        <div id="d2" style="background-color:#ffa" @click="say('d2')"></div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {},
+            //因为界面中两个事件共用同一个事件处理函数，所以methods中只需要一个事件处理函数即可
+            methods: {
+                //但是，因为界面上的事件处理函数绑定时传入了一个实参值，所以methods中的事件处理函数就必须用一个形参变量接住实参值！
+                say(id) {
+                    alert(`${id} 疼! `)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

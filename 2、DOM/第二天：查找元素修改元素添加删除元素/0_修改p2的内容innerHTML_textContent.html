@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="p1">来自&lt;&lt;<a href="javascript:;">新华社</a>&gt;&gt;的消息</p>
+  <p id="p2"></p>
+  <p id="p3"></p>
+  <script>
+    var p1=document.getElementById("p1");
+    console.log(p1.innerHTML);
+    console.log(p1.textContent);
+    //想用innerHTML修改p2的内容
+    var p2=document.getElementById("p2");
+    p2.innerHTML=`来自&lt;&lt;<a href="javascript:;">新华社</a>&gt;&gt;的消息`;
+    var p3=document.getElementById("p3");
+    p3.textContent=`来自&lt;&lt;<a href="javascript:;">新华社</a>&gt;&gt;的消息`;
+  </script>
+</body>
+</html>

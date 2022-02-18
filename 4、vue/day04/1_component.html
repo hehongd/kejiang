@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script>
+    //想创建一个计数器组件，反复使用
+    Vue.component("my-counter",{
+      //组件要反复复制的HTML模板
+      //模板中将来哪里可能发生变化: 
+      //本例中span的内容可能发生变化，所以用{{n}}，初始为0
+      //模板中将来哪里可能触发事件: 
+      //本例中button可能触发事件
+      template:`<div>
+        <button @click="minus">-</button>
+        <span>{{n}}</span>
+        <button @click="add">+</button>
+      </div>`,
+      //因为页面上需要1个变量
+      data(){
+        return {
+          n:0
+        }
+      },
+      //因为页面上需要两个事件处理函数
+      methods:{
+        add(){
+          this.n++;
+        },
+        minus(){
+          if(this.n>0){
+            this.n--;
+          }
+        }
+      }
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!--页面上反复使用三次计数器组件: -->
+    <my-counter></my-counter>
+    <my-counter></my-counter>
+    <my-counter></my-counter>
+  </div>
+  <script>
+    new Vue({
+      el:"#app"
+    })
+  </script>
+</body>
+</html>

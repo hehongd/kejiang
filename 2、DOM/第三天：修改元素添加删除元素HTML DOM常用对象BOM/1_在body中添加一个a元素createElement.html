@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //想在body中添加一个a元素
+    var a=document.createElement("a");
+    a.href="http://tmooc.cn";
+    a.innerHTML="go to tmooc";
+    console.log(a);
+    document.body.appendChild(a);
+    //想创建一个input元素，放在a元素之前 / 之后 / 替换a元素
+    var input=document.createElement("input");
+    //input不需要设置任何属性，默认就是一个文本框
+    document.body.insertBefore(input,a);
+                 //.appendChild(input);
+                 //.replaceChild(input,a);
+  </script>
+</body>
+</html>

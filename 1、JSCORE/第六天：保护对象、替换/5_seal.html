@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";
+
+    var eric={
+      eid:1001, //只读
+      ename:"埃里克", //禁止删除
+      salary:12000 //禁止for in遍历
+    }
+    Object.defineProperties(eric,{
+      eid:{writable:false},
+      salary:{enumerable:false}
+    });
+
+    //密封eric对象
+    Object.seal(eric);
+
+    //尝试重新打开eid的writable开关
+    Object.defineProperty(eric,"eid",{
+      writable:true,
+      configurable:true
+    });//报错: Cannot redefine property: eid
+    //尝试修改eid的值
+    // eric.eid=-2;//报错: Cannot assign to read only property 'eid'
+    //尝试删除ename属性
+    // delete eric.ename;//报错: Cannot delete property 'ename'
+    //尝试遍历eric中所有属性
+    for(var key in eric){
+      console.log(`属性名:${key},属性值:${eric[key]}`)
+    }
+  </script>
+</body>
+</html>

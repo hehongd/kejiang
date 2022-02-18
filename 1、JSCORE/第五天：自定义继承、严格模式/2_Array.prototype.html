@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //如果我的项目中经常需要对数组中的元素值求和
+    //但是假设数组的原型对象中并没有提供求和的函数sum
+    //我们就可以想数组原型对象中强行添加一个自定义的sum函数
+    Array.prototype.sum=function(){
+      console.log(`调用了一次Array.prototype中我们自定义的sum()函数`)
+      var total=0;
+      //遍历将来要求和的数组中每个元素
+      //this->将来调用.sum()函数的.前的某一个数组家孩子对象
+      //比如: arr1.sum()  this->arr1
+      //比如: arr2.sum()  this->arr2
+      for(var i=0;i<this.length;i++){
+        total+=this[i];
+      }
+      return total;
+    }
+    console.log(Array.prototype);
+    //测试: 
+    //两个数组家孩子
+    var arr1=[1,2,3]
+    var arr2=[1,2,3,4,5];
+    //可共用数组原型对象中我们自定义的sum()函数，谁调用，this就指谁
+    console.log(arr1.sum());//6
+    console.log(arr2.sum());//15
+  </script>
+</body>
+</html>

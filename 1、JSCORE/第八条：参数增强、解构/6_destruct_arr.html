@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr=[2020,6,25];
+    //        年  月 日
+    //var [y,m,d]=arr;
+    //console.log(`今年端午节放假:${y}年${m}月${d}日`)
+    //错误: 
+    //var [m,d]=arr; //m=arr[0]=2020, d=arr[1]=6
+    //正确: 
+    var [ ,m,d]=arr; //m=arr[1]=6, d=arr[2]=25
+    //   0 1 2
+    console.log(`今年端午节放假:${m}月${d}日`)
+
+    //不能声明第三个变量，交换两个变量的值
+    var a=3;
+    var b=5;
+    //    先将a和b放入一个数组中
+    [b,a]=[a,b]
+    //再用b和a解构出来对应位置的元素值
+    console.log(a, b);//5  3
+  </script>
+</body>
+</html>

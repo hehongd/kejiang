@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="a1" href="http://tmooc.cn" target="_blank">go to tmooc</a>
+    <script>
+      var a1=document.getElementById("a1");
+      console.dir(a1);
+      //想获得a1的href属性
+      console.log(a1.href);
+      //设置a1的title属性
+      a1.title="欢迎访问tmooc"
+      //判断a1是否设置target属性
+      console.log(a1.target!=="");//true
+      //移除a1的target属性
+      a1.target="";//清空target属性值，失效了！
+      //判断a1是否设置target属性
+      console.log(a1.target!=="");//false
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>.....</title>
+	<meta charset="utf-8" />
+	<style>
+	</style>
+</head>
+
+<body>
+	<form>
+		用户名:<input disabled></br>
+		密码:<input type="password" disabled></br>
+		<input type="checkbox">我同意本站的使用条款<br>
+		<input type="submit" value="提交注册信息" disabled />
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 用户点type=checkbox的复选框触发启用禁用状态的改变
+		//应该查找type=checkbox的一个复选框
+		$(":checkbox")
+		//2. 绑定事件处理函数
+		//本例中:单击复选框触发变化
+		.click(function(){
+			//3. 查找要修改的元素
+			//本例中: 点了复选框要修改除当前复选框之外其余所有表单元素
+			var $others=$(":input:not(:checkbox)")
+			//4. 修改元素
+			//获得当前checkbox的选中状态
+			//错误: jQuery是函数库，不能用属性方式
+			//var checked=$(this).checked;
+			//           当前复选框 获取 checked属性的值
+      var checked=$(this).prop("checked");
+			//因为checked属性值只是一个bool值，不是jQuery家子对象
+      //所以变量名不加$
+
+      //如果checkbox是选中的
+      if(checked==true){
+        //其它表单元素启用
+        //修改其他表单元素的disabled属性值为false
+        $others.prop("disabled",false);
+      }else{//否则如果checkbox是未选中的
+        //其它表单元素禁用
+        //修改其他表单元素的disabled属性值为true
+				$others.prop("disabled",true);
+			}
+			//基础好的同学，必须改为1句话！
+			//如果选中(checked为true)，则其它元素启用(disabled为false)
+			//否则如果未选中(checked为false)，则其它元素禁用(disabled为true)
+			//所以，只要让其他元素的disabled值和checked的值相反就行！不用三目！
+		})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>动态创建表格</title>
+    <meta charset="utf-8" />
+    <style>
+      table{width:600px; border-collapse:collapse;
+        text-align:center;
+      }
+      td,th{border:1px solid #ccc}
+    </style>
+  </head>
+  <body>
+    <div id="data">
+      <table>
+        <thead>
+          <tr>
+            <th>员工姓名</th>
+            <th>薪资</th>
+            <th>员工年龄</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+    <script>
+    var json=[
+      {"ename":"Tom", "salary":11000, "age":25},
+      {"ename":"John", "salary":13000, "age":28},
+      {"ename":"Mary", "salary":12000, "age":25}
+    ];
+
+    //因为tbody已经在页面上了
+    //所以，只能先创建一个临时的托盘——文档片段对象
+    var frag=document.createDocumentFragment();
+
+    //遍历json数组中每个员工对象
+    for(var emp of json){
+      //每遍历一个员工对象，就创建一个tr
+      var tr=document.createElement("tr");
+      //但是，不能将tr直接追加到tbody下
+      //而是，先将tr临时追加到文档片段对象托盘中暂存
+      frag.appendChild(tr);
+      //遍历当前emp对象中每个属性值
+      for(var key in emp){
+        //每遍历一个属性值，就创建一个td，并设置td的内容为当前属性值，最后将td追加到当前tr对象中
+        var td=document.createElement("td");
+        td.innerHTML=emp[key];//因为key是变量，所以不加""
+        tr.appendChild(td);
+      }
+    }
+
+    //最后,再一次性的将文档片段托盘添加到tbody中
+    var tbody=document.querySelector("#data>table>tbody");
+    tbody.appendChild(frag);
+    //查看以下tbody的孩子中有没有一个frag元素对象
+    console.log(tbody.children);
+    </script>
+  </body>
+</html>

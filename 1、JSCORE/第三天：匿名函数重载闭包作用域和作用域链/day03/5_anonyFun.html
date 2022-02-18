@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    (function(){
+      //在页面开始加载时，弹出提示框: 开始加载页面内容,at:时间
+      //start变量就变成了局部变量
+      var start=new Date();//获得当前系统时间
+      alert(`开始加载页面内容,at:${start.toLocaleString()}`);
+                                      //复习第一阶段Date相关内容
+    })();//所有局部变量在匿名函数自调后，会被自动释放！因为局部变量没有保存在全局。（稍后讲）
+  </script>
+  <script>
+    //在页面加载完成是，弹出提示框：页面加载完成,at:时间
+    var end=new Date();//获得当前系统时间
+    alert(`页面加载完成,at:${end.toLocaleString()}`)
+                             //复习第一阶段Date相关内容
+    //按理说: start变量和end变量在页面加载完之后，使命就结束了！
+    //但是: end变量却还遗留在window中，不会被释放！
+  </script>
+</body>
+</html>

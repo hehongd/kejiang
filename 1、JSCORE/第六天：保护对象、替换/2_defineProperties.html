@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  "use strict";
+
+  //一个员工对象eric
+  var eric={
+    eid:1001, //员工编号
+    /*eid:{
+      value:1001,
+      writable:true, //控制着是否可修改属性值
+      enumerable:true, //控制着是否可被for in遍历到，但是防不住.直接访问
+      configurable:true //控制着: 1. 是否可删除该属性
+                        //        2. 是否可修改前两个开关
+    }*/
+    ename:"埃里克", //员工姓名
+    salary:12000 //薪资
+  }
+  //错误: 尝试用.访问每个属性小对象内的开关值
+  // console.log(
+  //   eric.eid.value, 
+  //   eric.eid.writable, 
+  //   eric.eid.enumerable,
+  //   eric.eid.configurable
+  // ); //undefined undefined undefined undefined
+
+  //正确：用专门的函数查看一个对象中一个属性的开关值
+  var obj=Object.getOwnPropertyDescriptor(eric,"eid");
+  console.log(obj);
+
+  //企业中有三个规定:
+  //1. 员工编号禁止随意修改——只读  eid的writable改为false
+  //2. 员工不能没有姓名属性——不能删除 ename的configurable改为false
+  //3. 员工的薪资不能随意被for in遍历 salary的enumerable改为false
+
+  //让eric的eid属性只读
+  //重新定义eric的eid属性的writable为false
+  //让eric的ename禁止删除
+  //重新定义eric的ename属性的configurable为false
+  //不想让eric的salary随意被for in遍历
+  //重新定义eric的salary属性的enumerable:false
+  Object.defineProperties(eric,{
+    eid:{
+      writable:false, 
+      configurable:false
+    },
+    ename:{
+      configurable:false
+    },
+    salary:{
+      enumerable:false,
+      configurable:false
+    }
+  })
+  var obj=Object.getOwnPropertyDescriptor(eric,"eid");
+  console.log(obj);
+  //屌丝: 尝试将已经关闭的eid的writable重新打开，再修改
+  // Object.defineProperty(eric,"eid",{
+  //   writable:true,
+  //   configurable:true
+  // })//Cannot redefine property: eid
+  //   // 不能   重新定义   属性     eid
+
+  //试图修改eid
+  // eric.eid=-2; //报错: 
+  // //Cannot assign to read only property 'eid'
+  // //不能    赋值  给   只读      属性      eid
+
+  //试图删除ename
+  //删除 对象的属性——危险
+  //delete eric.ename; //报错: Cannot delete property 'ename'
+
+  //试图遍历eric所有属性，包括工资！
+  for(var key in eric){
+    console.log(`属性名:${key}, 属性值: ${eric[key]}`)
+  }
+  console.log(eric);
+  //尝试用.直接访问eric的salary属性
+  console.log(`薪资:${eric.salary}`) //依然可以正常输出薪资
+  </script>
+</body>
+</html>

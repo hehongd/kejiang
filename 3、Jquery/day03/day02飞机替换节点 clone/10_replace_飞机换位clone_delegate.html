@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>替换节点</h1>
+
+  <div id="chosen">
+    <img src="img/p0.png">
+  </div>
+  <hr />
+  <div id="list">
+    <img src="img/p3.png">
+    <img src="img/p4.png">
+    <img src="img/p5.png">
+  </div>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //DOM 4步
+    //1. 查找触发事件的元素
+    //本例中: id为list下的所有img都可点击
+    //1. 所以，应该用事件委托优化，事件应该只绑定在父元素上一份
+    $("#list")
+    //2. 绑定事件处理函数
+    //本例中: 单击图片触发变化
+    //只有点在img元素上才能触发变化
+    //         元素选择器
+    .on("click","img",function(){
+        //3. 查找要修改的元素
+        //4. 修改元素
+        //本例中: 先将当前点中的img克隆一个一模一样的副本，用副本代替id为chosen的div下的img。
+        $(this).clone().replaceAll("#chosen>img") //不用自己找，replaceAll自带查找功能！
+    })
+  </script>
+</body>
+
+</html>

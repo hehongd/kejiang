@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>全选和取消全选</title>
+	</head>
+	<body>
+		<h2>管理员列表</h2>
+		<table border="1px" width="500px">
+			<thead>
+			<tr>
+				<th><input type="checkbox"/>全选</th>
+				<th>管理员ID</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td>1</td>
+					<td>Tester</td>
+					<td>修改 删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td>2</td>
+					<td>Manager</td>
+					<td>修改 删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td>3</td>
+					<td>Analyst</td>
+					<td>修改 删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td>4</td>
+					<td>Admin</td>
+					<td>修改 删除</td>
+				</tr>
+			</tbody>
+		</table>
+		<script>
+			/* 功能一. 点全选，控制下方所有checkbox的选中状态 */
+			//DOM 4步
+			//1. 查找触发事件的元素
+			//本例中: 用户点thead下的input，触发了变化
+			var chbAll=document.querySelector("table>thead input");
+			//2. 绑定事件处理函数
+			//本例中: 用户单击input时，触发变化
+			chbAll.onclick=function(){
+				//3. 查找要修改的元素
+				//本例中: 点全选，要改tbody中所有input
+				var chbs=document.querySelectorAll("table>tbody input");
+				//4. 修改元素
+				//本例中: 修改tbody中所有input的checked属性值和当前点击的全选input的checked属性保持一致
+				for(var chb of chbs){
+					chb.checked=this.checked;
+				}
+			}
+
+			/* 功能二. 点击tbody中每个input，也有可能影响thead中input的状态 */
+			//DOM 4步
+			//1. 查找触发事件的元素
+			//本例中: 用户点tbody中每个input都可能触发变化
+			var chbs=document.querySelectorAll("tbody input");
+			//2. 绑定事件处理函数
+			//本例中: tbody下每个input都可以点击
+			for(var chb of chbs){
+				chb.onclick=function(){
+					//3. 查找要修改的元素
+					//本例中: 点tbody中每个input，都可能影响thead中input
+					var chbAll=document.querySelector("thead input");
+					//4. 修改元素
+					//本例中: 如果tbody中所有input都选中，则上边的全选就选中，否则如果tbody中有未选中的input，则上边的全选就不选中
+					//4.1 尝试查找tbody下所有input中那个未选中的input
+					var unchecked=document.querySelector("tbody input:not(:checked)")
+					//4.2 如果找到一个未选中的input，则上方的全选就不选中
+					if(unchecked!=null){
+						chbAll.checked=false;
+					}else{//4.3 否则如果未找到未选中的input，则上方的全选就选中
+						chbAll.checked=true;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //如果找到关键词
+    var str = "老师:请用小红 我的 朋友造句。小亮:小红是我的朋友。小然:朋友！小红是我的！";
+    //如果找不到关键词: 
+    // var str="you can you up,no can no bibi";
+    //用正则表达式找出str中*所有*以小字开头的人名
+    var arr = str.match(/小[\u4e00-\u9fa5]/g);
+    //arr=null
+    console.log(arr);
+    //希望将所有以小字开头的人名都替换为**
+    str = str.replace(/小[\u4e00-\u9fa5]/g, "**");
+    //不报错，而是返回原字符串，什么也不干！
+    console.log(str);
+    //如果match找到了敏感词
+    if (arr != null) {
+      //才输出共替换了几处？
+      console.log(`共替换了${arr.length}处`);
+      //                    null.length 报错: 无法读取null的length属性
+    } else {//否则如果match没找到敏感词
+      //就输出共替换0处
+      console.log(`共替换了0处`)
+    }
+  </script>
+</body>
+
+</html>

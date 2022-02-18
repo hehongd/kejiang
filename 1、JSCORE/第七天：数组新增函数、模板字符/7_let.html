@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var t=0;//定义一个全局变量，用来累加以下两个函数的执行时间
+    function fun1(){
+      console.log(`fun1耗时0.3s`);
+      t+=0.3;
+    }
+    function fun2(){//是作用域
+      console.log(`fun2耗时0.8s`);
+      t+=0.8;//只是加在局部变量t上
+
+      //后期维护过程中，又新增了一段代码: 
+      if(true){//变成作用域了
+        //let 让if后{也变成了作用域
+        let t=new Date();
+        console.log(`当前时间: ${t.toLocaleString()}`);
+        //在底层已经被翻译为以下代码: 
+        // (function(){
+        //   var _t=new Date();//成了if内的局部变量，不会影响外部
+        //   console.log(`当前时间: ${_t.toLocaleString()}`)
+        // })();
+      }//就算if执行，里边的let t和外边的t，不会互相影响
+    }
+    fun1();
+    fun2();
+    console.log(`共耗时${t}s`);//1.1
+  </script>
+</body>
+</html>

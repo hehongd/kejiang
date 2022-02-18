@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="img/1.jpg" data-target="img/1-l.jpg" class="my-small">
+  <img src="img/2.jpg" data-target="img/2-l.jpg" class="my-small">
+  <img src="img/3.jpg" data-target="img/3-l.jpg" class="my-small">
+  <img src="img/4.jpg" data-target="img/4-l.jpg" class="my-small">
+  <hr />
+  <img src="img/1-l.jpg" class="my-big">
+
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  //点击小图片，下方my-big中显示大图片
+  //DOM 4步
+  //1. 查找触发事件的元素
+  //本例中: 用户点class为my-small的img元素触发变化
+  $(".my-small")
+  //2. 绑定事件处理函数
+  //本例中: 单击触发变化
+  .click(function(){
+    //3. 查找要修改的元素
+    //本例中: 要修改class为my-big的img
+    $(".my-big")
+    //4. 修改元素
+    //本例中: 要修改my-big的src属性为当前点击的小图片上的data-target属性值！
+    //          当前小图片 获取 data-target属性值
+    .attr("src",$(this).attr("data-target"))
+    //.prop()          不能改.prop()
+  })
+  </script>
+</body>
+
+</html>

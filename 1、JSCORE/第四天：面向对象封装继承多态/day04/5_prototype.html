@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //先定义构造函数妈妈，但是不要包含方法定义！
+    function Student(sname, sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    //输出附赠的空的原型对象
+    console.log(Student.prototype);//看到一个空对象
+    //向原型对象中添加intr方法: 强行赋值
+    Student.prototype.intr=function(){
+      console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+    }
+    //妈妈生了两个孩子
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    //          李磊 的 爹    是不是 Student的原型对象
+    console.log(lilei.__proto__==Student.prototype); //true
+    //       韩梅梅 的 爹    是不是 Student的原型对象
+    console.log(hmm.__proto__==Student.prototype); //true
+
+    lilei.intr();
+    hmm.intr();
+  </script>
+</body>
+</html>

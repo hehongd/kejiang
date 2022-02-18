@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> new document </title>
+	<meta charset="utf-8">
+	<style>
+		.container {
+			border: 1px solid #aaa;
+			overflow: hidden;
+		}
+
+		.block {
+			float: left;
+			margin: 10px;
+			border: 1px solid #aaa;
+			background: #faa;
+			width: 150px;
+			height: 150px;
+		}
+
+		.block:hover {
+			box-shadow: 0 5px 6px #000;
+		}
+
+		.close {
+			float: right;
+			padding: 5px;
+			font-weight: bold;
+			opacity: .2;
+			cursor: pointer;
+		}
+
+		.close:hover {
+			opacity: .5;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>添加/删除节点</h1>
+	<button id="add-block">添加区块</button>
+
+	<div class="container">
+		<!-- <div class="block">
+			<span class="close">×</span>
+		</div> -->
+	</div>
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+	//DOM 4步
+	//1. 查找触发事件的元素
+	//本例中: 点击按钮添加方块
+	$("#add-block")
+	//2. 绑定事件处理函数
+	.click(function(){
+		// //3. 查找要修改的元素
+		// //本例中: 向class="container"的div开头插入一个新方块div元素
+		// var $container=$(".container");
+		// //4. 修改元素
+		// //本例中: 
+		// //先创建一个新的方块元素对象
+		// var $block=$(`<div class="block">
+		// 	<span class="close">×</span>
+		// </div>`);
+		// //设置方块的随机背景色
+		// $block.css("background-color",`rgb(${
+		// 	parseInt(Math.random()*256)
+		// },${
+		// 	parseInt(Math.random()*256)
+		// },${
+		// 	parseInt(Math.random()*256)
+		// })`);
+		// //最后将方块插入到$container开头
+		// $container.prepend($block);
+
+		//创建一个新方块
+		$(`<div class="block">
+				<span class="close">×</span>
+		</div>`)
+		//设置方块的随机背景色
+		.css("background-color",`rgb(${
+			parseInt(Math.random()*256)
+		},${
+			parseInt(Math.random()*256)
+		},${
+			parseInt(Math.random()*256)
+		})`)
+		//return 新方块
+		//将方块插入到父元素开头
+		//.prependTo($(".container"))
+		//简写: 不用自己找.container，直接把选择器给prependTo，prependTo会自动查找选择器所指的父元素
+		.prependTo(".container");
+	})
+	
+	//实现点x按钮删除当前方块
+	//DOM 4步
+	//1. 查找触发事件的元素 
+	//本例中: 因为多个x都可单击，所以应该用事件委托优化——复习事件委托
+	//事件应该只绑定在父元素上一份即可
+	$(".container")
+	//2. 绑定事件处理函数
+	//本例中: 应该先获得事件对象e，才能用e.target获得目标元素x
+	.click(function(e){
+		//获得当前点击的元素
+		var $target=$(e.target);
+		//判断当前实际点的元素是否是想要的
+		//本例中: 只有点在class为close的span元素上，才能删除
+		if($target.hasClass("close")){ //说明我们点的是x
+			//3. 查找要修改的元素
+			//本例中: 点x，其实是要删除x的父元素div
+			$target.parent()
+			//4. 修改元素
+			//本例中: 删除父元素div
+						 .remove();
+		}
+	})
+	
+	</script>
+
+</body>
+
+</html>

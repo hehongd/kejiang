@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var user={
+      uname:"dingding",
+      phone:"18301092802",
+      sex:1,
+      age:20,
+      intr:function(){
+        console.log(`I'm ${this.uname}, I'm ${this.age}`);
+      },
+      login:function(){
+        console.log("登录...")
+      },
+      logout:function(){
+        console.log("注销...")
+      },
+      changePwd:function(){
+        console.log("修改密码...")
+      }
+    }
+    //在当前页面中只想使用uname和changePwd两个成员
+    //  属性名:变量名,   属性名:变量名  
+    // var {uname:u,    changePwd:change}=user;
+    // //u=user.uname
+    // //change=user.changePwd
+    // console.log(`欢迎 ${u}`);
+    // change();
+    //如果我们觉得对象中的属性名已经很简洁，且见名知意了，不想改名
+    //var {uname:uname, changePwd:changePwd}=user;
+    //简写:一个名字两用,既当做配对的属性名，又当做将来单独使用时的变量名
+    var {uname, changePwd, intr}=user; //今后对象解构基本都只写一个名字
+    console.log(`欢迎 ${uname}`);//全局变量
+    changePwd();
+    //用旧方法调用
+    user.intr();//this->user  this.uname=user.uname=dingding
+    //解构后再调用
+    intr();//this->window  this.uname=window.uname=dingding
+                        //this.age=window.age=undefined
+  </script>
+</body>
+</html>

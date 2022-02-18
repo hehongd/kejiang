@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr=[1,2,3,4,5];
+    //相对数组中的元素值求和
+    var sum=arr.reduce(function(捐款箱,elem){
+      console.log(`自动调用一次回调函数:捐款箱中现有${捐款箱}元, 当前新元素值${elem}元，现在捐款箱中的钱+当前新元素值=${捐款箱+elem}元，还放回捐款箱，为继续累加下一个元素值做准备.`)
+      return 捐款箱+elem
+    },0);//捐款箱中的钱数从0开始累加
+    console.log(sum);
+  </script>
+</body>
+</html>

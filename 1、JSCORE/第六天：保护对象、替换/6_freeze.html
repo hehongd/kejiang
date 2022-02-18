@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+
+    var pool={
+      host:"127.0.0.1",//writable:false
+      port:3306,//writable:false
+      db:"xz"//writable:false
+    }
+    Object.freeze(pool);
+
+    pool.host="192.168.0.100";//报错: Cannot assign to read only property 'host'
+  </script>
+</body>
+</html>

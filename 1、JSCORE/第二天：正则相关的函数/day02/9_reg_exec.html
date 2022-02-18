@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = "老师:请用小红 我的 朋友造句。小亮:小红是我的朋友。小然:朋友！小红是我的！";
+    //定义正则描述小字开头的人名
+    
+    //用正则表达式找出str中*所有*以小字开头的人名和位置
+    var reg=/小[\u4e00-\u9fa5]/;
+    //用match()做: 无法实现找所有的要求
+    var arr = str.match(reg);
+    console.log(arr);//返回第一个人名和位置
+    var arr = str.match(reg);
+    console.log(arr);//只能返回第一个人名和位置
+
+    var reg=/小[\u4e00-\u9fa5]/g;
+    //do while
+    //不管有没有关键词，都要先查找一次！才知道有没有关键词，有没有必要继续
+    do{
+      var arr=reg.exec(str);
+      if(arr!=null){//如果本次找到了关键词，才有必要输出关键词的内容和位置
+        //console.log(arr);
+        console.log(`在位置${arr.index}发现敏感词${arr[0]}`)
+      }//否则如果没找到关键词，就什么也不输出。
+    }while(arr!=null);//如果arr!=null，说明本次找到关键词了，才有必要继续找下一个
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <title>...</title>
+   </head>
+   <body>
+      <button id="btnShoot">shoot</button><br>
+      <button id="btnAward">获得跟踪导弹</button><br>
+      <button id="btnBreak">失去跟踪导弹</button><br>
+      <script>
+         var btnShoot=document.getElementById("btnShoot");
+         var btnAward=document.getElementById("btnAward");
+         var btnBreak=document.getElementById("btnBreak");
+         //希望开局点shoot按钮，只能发射一种普通子弹
+         btnShoot.onclick=function(){
+            console.log(`发射普通子弹......`);
+         }
+         //希望点获得跟踪导弹之后，为shoot按钮多添加一种新的跟踪导弹，希望再点shoot时，能同时发射两种子弹！
+         //因为跟踪导弹的事件处理函数有可能被移除
+         //所以必须定义为有名称的函数
+         // function shoot2(){
+         //    alert(`发射跟踪导弹=>=>=>`)
+         // }
+         btnAward.onclick=function(){
+            // btnShoot.onclick=function(){
+            //    alert(`发射跟踪导弹=>=>=>`)
+            // }
+            //因为跟踪导弹的事件处理函数有可能被移除
+            //所以绑定时就要用函数名绑定
+            btnShoot.addEventListener("click",shoot2=()=>{alert(`发射跟踪导弹=>=>=>`)})
+         }
+         //希望点失去跟踪导弹，从shoot按钮上移除跟踪导弹的事件处理函数
+         btnBreak.onclick=function(){
+            //移除时必须用原函数名移除
+            btnShoot.removeEventListener("click",shoot2)
+         }
+      </script>
+   </body>
+</html>

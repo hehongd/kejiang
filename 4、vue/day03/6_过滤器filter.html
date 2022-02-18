@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script>
+    //希望根据输入的语言种类不同，加工出不同语言的男和女
+    //                               预留    自定义
+    Vue.filter("sexFilter",function(oldVal, 语言种类){
+      //如果语言种类传入"英文",则加工出Male  Female
+      if(语言种类=="英文"){
+        return oldVal==1?"Male":"Female"
+      }else{//否则如果传入的语言种类不是"英文"，则默认加工出男和女
+        return oldVal==1?"男":"女"
+      }
+    });
+    //为了能够给性别末尾追加图标: 
+    //可能: {{sex | sexIcon }}  0和1
+    //也可能: {{ sex | sexFilter | sexIcon}}  男和女
+    //也可能: {{ sex | sexFilter("英文") | sexIcon}}  Male和Female
+    //                             预留
+    Vue.filter("sexIcon",function(oldVal){
+      //oldVal可能6种:  1和0  男和女   Male和Female
+      //如果oldVal是1或0，则直接返回♂和♀
+      if(oldVal==1){
+        return "♂"
+      }else if(oldVal==0){
+        return "♀"
+      }else if(oldVal=='男'||oldVal=="Male"){//否则如果oldVal不是0或1则需要将♂和♀拼接到现有oldVal结尾
+        return oldVal+"♂"
+      }else{
+        return oldVal+"♀"
+      }
+    })
+  </script>
+</head>
+<body>
+  <div id="app">
+    <h3>性别1:{{sex1 | sexIcon}}</h3>
+    <h3>性别2:{{sex2 | sexIcon}}</h3>
+    <h3>性别1:{{sex1 | sexFilter | sexIcon}}</h3>
+    <h3>性别2:{{sex2 | sexFilter | sexIcon}}</h3>
+    <!--                         自定义   -->
+    <h3>性别1:{{sex1 | sexFilter("英文") | sexIcon}}</h3>
+    <h3>性别2:{{sex2 | sexFilter("英文") | sexIcon}}</h3>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        sex1:1,
+        sex2:0
+      }
+    })
+  </script>
+</body>
+</html>

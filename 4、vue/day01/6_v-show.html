@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    #alert{
+      width:300px; 
+      height:100px;
+      background-color:#ffa;
+      position:fixed;
+      top:50%;
+      left:50%;
+      margin-left:-150px;
+      margin-top:-50px;
+      line-height:100px;
+    }
+    #alert>a{
+      float:right;
+      line-height:30px;
+      margin-right:10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--希望div#alert随变量isShow的值不同而显示隐藏
+        希望点click me，让div#alert显示（将isShow变量值改为true）
+        希望点×，让div#alert隐藏（将isShow变量值改为false）-->
+    <button @click="pop">click me</button>
+    <div v-show="isShow" id="alert">
+      <a href="javascript:;" @click="close">×</a>
+      您的浏览器版本太低，请升级浏览器
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      //因为页面上需要一个isShow变量，所以
+      data:{
+        isShow:false//定义一个变量控制对话框的显示和隐藏，开局默认隐藏
+      },
+      //因为页面上需要？个事件处理函数: pop和close
+      methods:{
+        pop(){
+          this.isShow=true;
+        },
+        close(){
+          this.isShow=false;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

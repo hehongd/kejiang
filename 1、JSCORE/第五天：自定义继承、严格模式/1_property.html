@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //定义一个构造函数描述所有学生的统一属性结构
+    function Student(sname,sage){
+      this.sname=sname;
+      this.sage=sage;
+    }
+    //希望将来的所有学生都是同一个班级的学生
+    Student.prototype.className="初一2班"
+
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han Meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    //想获得lilei和hmm的sage //自有
+    console.log(lilei.sage, hmm.sage);
+    //想获取lilei和hmm的className //共有
+    console.log(lilei.className, hmm.className);
+    //修改lilei和hmm的年龄+1  //自有
+    lilei.sage++;
+    hmm.sage++; 
+    //再次获得lilei和hmm的sage //自有
+    console.log(lilei.sage, hmm.sage);
+    //lilei和hmm都升了一级
+    //正确: 
+    Student.prototype.className="初二2班";
+    //再次获取lilei和hmm的className //共有
+    console.log(lilei.className, hmm.className);
+    //错误: 李磊想拖着全班一起留级！
+    lilei.className="六年级2班";
+    //再次获取lilei和hmm的className //共有
+    console.log(lilei.className, hmm.className);
+    //               六年级2班        初二2班
+    console.log(lilei);
+    console.log(hmm);
+    //又过了一年，大家一起升到初三2班
+    Student.prototype.className="初三2班";
+    //再次获取lilei和hmm的className //共有
+    console.log(lilei.className, hmm.className);
+    //               六年级2班        初三2班
+  </script>
+</body>
+</html>

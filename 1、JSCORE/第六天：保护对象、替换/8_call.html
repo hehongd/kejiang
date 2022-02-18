@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //有一个公共的计算薪资的函数
+    //三个形参      底薪   奖金1    奖金2
+    function jisuan(base, bonus1, bonus2){
+      console.log(`${this.ename} 的总工资是: ${base+bonus1+bonus2}`)
+    }
+    //有两个员工: 
+    var lilei={ ename:"Li Lei" };
+    var hmm={ ename:"Han Meimei" };
+    
+    //李磊这个月底薪10000，奖金1:1000, 奖金2:2000，李磊想用jisuan()计算自己的总工资
+    //错误做法1:
+    //jisuan() //this->window  window.ename->undefined
+    //错误做法2: lilei能调用全局函数jisuan()
+    //console.log(lilei); //查看李磊的原型链都没有jisuan()
+    //因为jisuan()函数保存在全局window中，不属于任何一个对象的原型链，只属于作用域链。
+    //lilei.jisuan() //报错: lilei.jisuan is not a function
+    //正确做法: 
+    jisuan.call(lilei,10000,1000,2000) 
+    //           |      ↓     ↓    ↓
+    //jisuan(    ↓    base,bonus1,bonus2)
+    //          this.ename ....
+    //call()会临时将jisuan()中的this->lilei
+    //this.ename -> lilei.ename -> "Li Lei"
+    //又能将10000,1000,2000依次传给jisuan()函数的base,bonus1,bonus2
+    //如果hmm也想用jisuan()计算自己的薪资:底薪4000,奖金1:5000,奖金2:6000
+    jisuan.call(hmm,4000, 5000, 6000)
+    //           |    ↓     ↓     ↓
+    //  jisuan(  ↓  base,bonus1,bonus2)
+    //          this.ename...
+  </script>
+</body>
+</html>

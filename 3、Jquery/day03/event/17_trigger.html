@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <input><button>百度一下</button>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  //希望点按钮获取文本款中的关键词，执行搜索操作
+  //DOM 4步
+  //1. 查找触发事件的元素
+  //本例中: 点按钮执行搜索
+  $("button")
+  //2. 绑定事件处理函数
+  //本例中: 绑定单击事件
+  .click(function(){
+    //先获取文本框中的内容
+    var value=$(":text").val().trim();
+    //如果文本框中内容不为""
+    if(value!==""){
+      //再执行搜索操作
+      console.log(`查找 ${value} 相关的内容...`)
+    }
+  });
+  //希望在文本框上按回车,可执行和点击按钮一样的搜索功能
+  //         键盘按下再抬起
+  $(":text").keyup(function(e){
+    //只有按的是回车键时才执行搜索
+    //事件对象e中保存了一个keyCode属性，专门获取本次按键的序号
+    //如果按的是13号键，说明本次按的是回车
+    if(e.keyCode==13){
+      //模拟触发按钮的单击事件处理函数
+      //$("button").trigger("click")
+      //因为click事件属于常用事件列表
+      $("button").click();
+    }
+  })
+  </script>
+</body>
+
+</html>

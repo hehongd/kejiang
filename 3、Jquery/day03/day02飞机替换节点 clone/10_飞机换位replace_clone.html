@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>替换节点</h1>
+
+  <div id="chosen">
+    <img src="img/p0.png">
+  </div>
+  <hr />
+  <div id="list">
+    <img src="img/p3.png">
+    <img src="img/p4.png">
+    <img src="img/p5.png">
+  </div>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //DOM 4步
+    //1. 查找触发事件的元素
+    //本例中: id为list下的所有img都可点击
+    //1. 所以，应该用事件委托优化，事件应该只绑定在父元素上一份
+    $("#list")
+    //2. 绑定事件处理函数
+    //本例中: 单击图片触发变化
+    .click(function(e){
+      //2. 用e.target代替this获得当前点击的img元素
+      var $target=$(e.target);
+      //3. 验证$target是不是想要的
+      //本例中: 只有点在img元素上才能触发变化
+      //if($target是img){
+      //错误: jQuery是函数库，不能使用.属性
+      //if($target.nodeName=="IMG"){
+      //正确: jQuery用.prop()代替了.属性
+      //if($target.prop("nodeName")=="IMG"){
+      //新增: $元素.is("选择器")
+      //           元素选择器
+      if($target.is("img")){
+        // //3. 查找要修改的元素
+        // //本例中: 点击下方飞机图片，应该先将当前img复制一个副本，用副本去代替id为chosen的div下的img
+        // var $chosen=$("#chosen>img");
+        // //4. 修改元素
+        // $target.clone().replaceAll($chosen);
+        // //原img  副本img
+        //简写:
+        $target.clone().replaceAll("#chosen>img") //不用自己找，replaceAll自带查找功能！
+      }
+    })
+  </script>
+</body>
+
+</html>

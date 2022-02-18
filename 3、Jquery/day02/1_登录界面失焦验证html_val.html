@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> new document </title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1>操作元素的内容和值</h1>
+	<form action="">
+		用户名:<input name="uname">
+		<span></span><br>
+		密码:<input type="password" name="upwd">
+		<span></span><br>
+		<input type="submit" value="提交注册信息">
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+    //正确时，使用图片:"<img src='img/ok.png'>"
+    //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+    //密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 当姓名文本框失去焦点时，触发验证和变化
+		//应该找文本框: 
+		$(":text")
+		//2. 绑定事件处理函数
+		//本例中: 失去焦点触发验证和变化
+		.blur(function(){
+			var $txt=$(this);
+			//3. 查找要修改的元素
+			//本例中: 不管验证通过还是未通过，都要修改文本框旁边的下一个span
+			var $span=$txt.next();
+			//4. 修改元素
+			//获得文本框中内容去掉空字符后的长度
+			var length=$txt.val().trim().length;
+			//如果长度介于3~9位字符之间，就验证通过
+			if(length>=3&&length<=9){
+				//就设置span的内容为<img src='img/ok.png'>
+				$span.html(`<img src='img/ok.png'>`)
+			}else{//否则如果验证不通过
+				//就设置span的内容为<img src='img/err.png'>用户名必须介于3~9位之间!
+				$span.html(`<img src='img/err.png'>用户名必须介于3~9位之间!`);
+			}
+		});
+		//自己模仿我的姓名文本框，制作密码框验证
+	</script>
+</body>
+
+</html>

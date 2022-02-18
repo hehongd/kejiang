@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        #app>div {
+            width: 300px;
+            height: 100px;
+        }
+        
+        #app>div:hover {
+            box-shadow: 0 0 5px red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!--点哪个div的某个位置，就喊某个为疼！-->
+        <div id="d1" style="background-color:#aaf" @click="say"></div>
+        <div id="d2" style="background-color:#ffa" @click="say"></div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {},
+            methods: {
+                //因为想获得鼠标点击的位置，必须加形参e
+                //event
+                //  ↓
+                say(e) {
+                    console.log(e);
+                    alert(`${e.offsetX},${e.offsetY}位置 疼! `)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

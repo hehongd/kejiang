@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //定义一个函数可以输出我的自我介绍
+    //                     默认值
+    function intr(intrSelf="主人很懒，什么也没留下"){
+      document.write(`<h1>我的自我介绍: ${intrSelf}</h1>`)
+    }
+    //调用者传入了自我介绍的内容
+    intr("you can you up, no can no bibi");
+    //调用者没有传入自我介绍的内容，也想有默认值占位
+    intr();
+    //如果恶意传入""
+    intr(""); //因为""不等于undefiend，所以不启用默认值！而使用""
+    //如果恶意传入undefined
+    intr(undefined);//因为传入的值也是undefined，所以认为什么都没传入，所以启用默认值！
+  </script>
+</body>
+</html>

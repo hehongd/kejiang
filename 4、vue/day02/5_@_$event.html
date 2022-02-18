@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    #app>div{
+      width:300px; 
+      height:100px;
+    }
+    #app>div:hover{
+      box-shadow:0 0 5px red
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--如果既需要传入实参值，又需要获得事件对象-->
+    <!--                 DOM event-->
+    <!--                    先 ↓  -->
+    <div id="d1" @click="say($event,'d1')" style="background-color:#aaf" ></div>
+    <!--                 DOM event-->
+    <!--                    先 ↓  -->
+    <div id="d2" @click="say($event,'d2')" style="background-color:#ffa" ></div>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{},
+      methods:{
+        //因为界面上调用事件处理函数时，传入了两个实参，所以methods中定义事件处理函数时，也必须定义两个形参对应
+        say(e, id){
+          alert(`${id}的 ${e.offsetX},${e.offsetY}位置 疼! `)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

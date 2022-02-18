@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>根据页面滚动位置显示浮动框</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+
+    #toTop {
+      position: fixed;
+      bottom: 100px;
+      right: 0;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div style="height:150px;"></div>
+  <div style="height:150px; background-color:pink">1楼</div>
+  <div style="height:150px; background-color:lightGreen">2楼</div>
+  <div style="height:150px; background-color:lightBlue">3楼</div>
+  <div style="height:150px; background-color:orange">4楼</div>
+  <div id="toTop">
+    <a id="a1" href="javascript:;">1楼</a>
+    <a id="a2" href="javascript:;">2楼</a>
+    <a id="a3" href="javascript:;">3楼</a>
+    <a id="a4" href="javascript:;">4楼</a>
+    <a href="javascript:;">返回顶部</a>
+  </div>
+  <script>
+    var div = document.getElementById("toTop");
+    //只要窗口的滚动条发生滚动时，就获取滚动条滚动过的距离
+    window.onscroll = function () {
+      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      console.log(scrollTop);
+      //只要滚动距离>=500，就让div显示
+      if (scrollTop >= 500) {
+        div.style.display = "block";
+      } else {//否则如果滚动距离不足500，就让div隐藏
+        div.style.display = "none";
+      }
+    }
+    //点击a时回到顶部
+    var a = document.querySelector("#toTop>a:last-child")
+    a.onclick = function () {
+      window.scrollTo(0, 0);
+    }
+    //点哪个楼层按钮，跳到哪个楼层
+    var a1=document.getElementById("a1");
+    var a2=document.getElementById("a2");
+    var a3=document.getElementById("a3");
+    var a4=document.getElementById("a4");
+    a1.onclick=function(){
+      window.scrollTo(0, 150);
+    }
+    a2.onclick=function(){
+      window.scrollTo(0, 300);
+    }
+    a3.onclick=function(){
+      window.scrollTo(0, 450);
+    }
+    a4.onclick=function(){
+      window.scrollTo(0, 600);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //鄙视题: 将每个单词首字母改为大写
+  var str="you can you up";
+  //每找到一个敏感词就自动调用一次回调函数
+  str=str.replace(/\b[a-z]/ig,function(keyword){
+    //打桩: 输出回调函数调用次数、关键变量的值、函数的返回值
+    console.log(`自动调用了一次回调函数,keyword收到${keyword},返回新值:${keyword.toUpperCase()}`);
+    //keyword依次接到: y, c, y, u
+    return keyword.toUpperCase()
+    //return 依次返回: Y, C, Y, U
+  })//replace会将回调函数返回的值替换到字符串中关键词的位置上。
+  console.log(str);
+  </script>
+</body>
+</html>

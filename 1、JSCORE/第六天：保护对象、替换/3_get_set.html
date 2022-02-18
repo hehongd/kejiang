@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var eric={
+      eid:1001,
+      ename:"埃里克",
+      eage:25
+    };
+    //年龄eage可以修改，但是年龄必须介于18~65之间！
+    //1. 先将eage属性值保存到一个半隐藏的_eage属性中
+    Object.defineProperties(eric,{
+      _eage:{//受保护的实际保存数据的属性
+        value:eric.eage, //将旧eric的eage属性值转义到半隐藏的新的_eage属性中
+        writable:true,//年龄可以改
+        enumerable:false, //不想让受保护的属性随意被for in遍历到
+        configurable:false, //以上设置禁止随意修改
+      },
+      //2. 为_eage请保镖: 
+      //保镖要冒名顶替eage
+      eage:{ //保镖一请就是一对儿
+        //专门负责从受保护的_eage属性中获取属性值给外部
+        get:function(){
+          console.log(`当试图读取eage的属性值时，自动调用一次eage的get()`)
+          //this->当前eric对象
+          return this._eage;
+        },
+        //专门负责将要修改的新属性值验证后保存到受保护的属性中
+        set:function(value){
+          console.log(`当试图修改eage的属性值时，自动调用一次eage的set(value=${value})`);
+          if(value>=18&&value<=65){
+            this._eage=value;
+          }else{
+            throw Error("您的年龄超范围，无法保存！")
+          }
+        },
+        enumerable:true,//保镖要代替_eage属性抛头露面
+        configurable:false, //以上设置禁止随意修改
+        //因为保镖不实际存值，所以没有value属性
+        //因为writable不好用，我们才用的访问器属性，所以一旦用get()和set()就不再需要使用writable开关了
+      }
+    });
+
+    //外界: 使用访问器属性和使用普通属性完全一样！因为外界根本不知道自己访问的是访问器属性。
+    //想获取eric的年龄
+    console.log(eric.eage);//
+    //先修改eric的年龄
+    eric.eage=26;//
+    console.log(eric);
+    //试图修改错误的年龄
+    eric.eage=-2;
+  </script>
+</body>
+</html>

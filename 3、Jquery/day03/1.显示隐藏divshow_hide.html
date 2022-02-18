@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> new document </title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1>jQuery动画函数——显示隐藏动画</h1>
+	<button id="btn1">显示/隐藏div</button>
+	<div id="target">
+		<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore debitis animi sint iste sequi sunt ad
+				excepturi error labore molestiae est expedita eos nisi placeat provident dolorem quos facilis!
+				Sapiente!</span><span>Accusamus neque id reprehenderit! Voluptatem in deleniti laboriosam commodi facere magnam
+				impedit minima corrupti distinctio culpa amet optio natus esse. Inventore incidunt ab id perspiciatis atque
+				minus magnam tempore harum.</span></p>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		$("#btn1").click(function () {
+			var $div=$("#target");
+			//如果div是隐藏的，就显示div
+			// if($div.is(":hidden")){
+			// 	$div.show();
+			// }else{//否则如果div是显示的，就隐藏div
+			// 	$div.hide();
+			// }
+
+			$div.toggle(2000);
+			//$div.slideToggle();
+			//$div.fadeToggle();
+		});
+	</script>
+</body>
+
+</html>

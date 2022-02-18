@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var price=12.5; //单价
+    var count=5; //数量
+    //打印一张简单的超市小票
+    console.log(`
+      单价: ¥${price.toFixed(2)}
+      数量: ${count}
+    ------------------------------
+      小计: ¥${(price*count).toFixed(2)} 
+    `);
+
+    var sex=1;//性别: 男
+    var orderTime=1591338064518;//下单时间:2020/6/5 14:21
+    var week=["日","一","二","三","四","五","六"];
+    //         0    1    2    3    4    5   6
+    console.log(`
+      性别:${sex==1?"男":"女"},
+      下单时间:${new Date(orderTime).toLocaleString()},
+      今天星期${week[new Date().getDay()]}
+    `)//                          5
+      //       week[5]
+      //       五
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //亮可以跑步，但是要提前准备一个小推车，装上下一项要执行的任务
+    function liang(小推车){
+      console.log(`亮起跑...`);
+      setTimeout(function(){ //异步
+        console.log(`亮到达终点!`);
+        //当亮的最后一步执行完之后，自动倒出小推车中的东西开始执行
+        小推车();
+      },6000)//亮需要6s跑完全程
+    }
+    //然可以跑步
+    function ran(小推车){
+      console.log(`然起跑...`);
+      setTimeout(function(){ //异步
+        console.log(`然到达终点!`);
+        //当然的最后一步执行完时，然才调用小推车里的东西
+        小推车();
+      },4000)//然需要4s跑完全程
+    }
+    //东可以跑步
+    function dong(){
+      console.log(`东起跑...`);
+      setTimeout(function(){ //异步
+        console.log(`东到达终点!`)
+      },2000)//东需要2s跑完全程
+    }
+    //必须让亮、然、东按顺序依次起跑，跑接力
+    //错误
+    // liang();//亮起跑...
+    // ran();//然起跑...
+    // dong();//东起跑...
+    //正确:
+    liang(
+      //只创建一个新函数，暂不执行！
+      function(){//用匿名函数包裹下一步要做的事儿
+        ran(
+          function(){//只创建一个新匿名函数，包含然的下一项任务，但暂不执行
+            dong();
+          }
+        );//然的小推车=function(){ dong() }
+      }
+    );//亮的小推车=function(){ ran(); }
+    //亮内部，当亮最后一步执行完，自动调用小推车()，匿名函数才开始执行，那已经是6s只有了！
+    //然内部，当然最后一步执行完，自动调用然的小推车()，最内层匿名函数才开始执行，已经又是4s后
+    //所以轮到内层函数执行时，已经等了6s+4s=10s;
+    //                             亮 然
+  </script>
+</body>
+</html>

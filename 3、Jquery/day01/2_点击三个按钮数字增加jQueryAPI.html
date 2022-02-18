@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>jQueryAPI特点</h1>
+  <button id="btn1">click me(0)</button>
+  <button id="btn2">click me(0)</button>
+  <button id="btn3">click me(0)</button>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //为三个按钮绑定单击事件，记录单击次数
+    //DOM 4步
+    //1. 查找触发事件的元素
+    //本例中: 三个按钮都可以单击
+    var $btns = $("button");
+    console.log($btns);
+    //2. 绑定事件处理函数
+    //本例中: 每个按钮都能点，但是只需要对整个jQuery对象调用一次简化版函数即可
+    $btns.click(function () {
+      //alert("疼！");
+      //希望点那个按钮，让哪个按钮变成画
+      //this.innerHTML="❀";
+      //$(this).html("❀")
+      //3. 查找要修改的元素
+      //本例中: 单击按钮时，就是要修改自己: this
+      var $this = $(this);
+      //4. 修改元素
+      //4.1 先*取出*当前按钮的内容中()中的数量，转为整数
+      var n = parseInt(
+        $this.html() //()中没有传入新内容,是空的，所以html()本次执行获取
+        //    "click me(10000)"
+        //    012345678901234
+        //              |    |
+            .slice(     9,  -1) //复习第一阶段slice函数用法
+        //             "10000"
+      );
+      //4.2 将数量+1
+      n++;
+      //4.3 将新数量拼到()中，*修改*回当前按钮的内容中
+      $this.html(`click me(${n})`);
+      //()中传入了新内容,不是空的，所以html(xxx)本次执行修改内容的操作
+    })
+    //button#btn1.onclick=function(){ this->button#btn1 }
+    //button#btn2.onclick=function(){ this->button#btn2 }
+    //button#btn3.onclick=function(){ this->button#btn3 }
+  </script>
+</body>
+
+</html>

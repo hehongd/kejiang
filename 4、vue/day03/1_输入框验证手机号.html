@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    /* 验证通过时的样式 */
+    .success{
+      border:1px solid green;
+      background-color:lightGreen;
+      color:green;
+      padding:3px 10px;
+      font-size:12px;
+    }
+    /* 验证失败的样式 */
+    .fail{
+      border:1px solid red;
+      background-color:pink;
+      color:red;
+      padding:3px 10px;
+      font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--验证前后界面上哪里可能发生变化: 3处
+      1. input的内容 - phone 存储用户输入的手机号
+                      开局: phone:""
+      2. span的class - success 存储一个bool值表示是否验证通过
+                      开局: success:false
+      3. span的内容 - errMsg 存储span中要显示的提示信息
+                      开局: errMsg:""-->
+    <!--只要用户在input中输入内容时，触发验证，所以
+      绑定oninput事件，执行vali函数，验证文本框中新内容-->
+    <input v-model="phone" @input="vali">
+    <!--如果用户没有在文本框中输入内容，则根本不用应用任何class-->
+    <!--只有用户在文本框中输入了内容且验证结果通过，就启用success class，禁用fail
+    否则如果用户在文本框中输入了内容且验证结果未通过，就启用fail class，禁用success-->
+    <span :class="{
+      success:phone.trim()!==''&&success==true, 
+      fail:phone.trim()!==''&&success==false
+    }">{{errMsg}}</span>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      //因为界面上需要三个变量所以
+      data:{
+        phone:"",
+        success:false,
+        errMsg:""
+      },
+      //因为界面上需要一个函数
+      methods:{
+        vali(){
+          console.log(this.phone);
+          //用正则验证phone变量中手机号的格式是否正确
+          //先定义手机号正则
+          var reg=/^1[3-9]\d{9}$/;
+          //在用正则验证phone的内容是否符合格式要求
+          var result=reg.test(this.phone.trim());
+          //如果phone的内容为空
+          if(this.phone.trim()===""){
+            //就清除errMsg的内容，等于清除span的内容,什么也不显示
+            this.errMsg="";
+          }else if(result==true){//否则如果验证通过: 
+            //就修改success变量为true，表示验证通过
+            this.success=true;
+            //就修改errMsg变量为手机号格式正确
+            this.errMsg="手机号格式正确";
+          }else{//否则如果验证未通过: 
+            //就修改success变量为false，表示验证未通过
+            this.success=false;
+            //就修改errMsg变量为手机号格式不正确
+            this.errMsg="手机号格式不正确";
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

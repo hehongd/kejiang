@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <!--1. 编写界面: 
+  要求: 整个界面必须包裹在一个唯一的父元素内,习惯上: <div id="app"></div>
+  额外: 2件事: 
+  1.1 找到界面中将来可能发生变化的位置，用{{自定义变量名}}临时占位
+  本例中: span的内容，将来随点击按钮而变化，所以<span>{{n}}</span>
+  1.2 找到界面中可能触发事件的元素，用@事件名="自定义处理函数名"标记出来
+  本例中: 单击btnMinus时触发减法操作，单击btnAdd时触发加法操作，所以
+  -->
+  <div id="app">
+    <button id="btnMinus" @click="minus">-</button>
+    <span>{{n}}</span>
+    <button id="btnAdd" @click="add">+</button>
+  </div>
+  <!-- <div id="#app2">
+  </div> -->
+  <script>
+    //2. 定义两个仓库对象: 仓库名必须叫data和methods
+    //2.1 一个仓库叫data，专门保存界面上所需的所有变量和初始值
+    //本例中: 界面上一共需要一个变量n，初始值为0
+    var data={ n:0 };
+    //2.2 另一个仓库叫methods, 专门保存界面上所需的所有事件处理函数
+    //本例中: 界面上共需要两个事件处理函数,分别是add和minus
+    var methods={
+      //复习小程序->在线->JSCORE->day07 作业:ES6关于对象中属性和方法的简写
+      add(){
+        //虽然现在事件处理函数和data中的n分着写，但是将来data对象和methods对象会被vue合并为一个对象，事件处理函数data中的变量最终会放在一个大的对象中保存，所以,methdos中的函数可通过this.xx方式操作data中的变量
+        //本例中: 点btnAdd，触发add函数，只想给data中的数量n+1
+        this.n++;
+        //不用自己放回去！
+      },
+      minus(){
+        //本例中: 点btnMinus，触发minus函数，如果data中的数量n>0，才将数量n-1
+        if(this.n>0){ this.n-- };
+      }
+    }
+    //3. 创建一个VUE对象充当快递员，自动送货
+    new Vue({
+      el:"#app", //选择器: 告诉快递员，请将货物送到id为app的小区中的各个住户手中！——这个快递元素所负责的小区
+      //告诉快递员，需要配送的变量和函数都放在哪些仓库里。
+      //复习小程序->在线->JSCORE->day07 作业:ES6关于对象中属性和方法的简写
+      data, //data:data, 
+      methods //methods:methods
+    });
+    // new Vue({
+    //   el:"#app2" //这个快递员专门负责app2小区的自动送货任务
+    // })
+  </script>
+</body>
+</html>

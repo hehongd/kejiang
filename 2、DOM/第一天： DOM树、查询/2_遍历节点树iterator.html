@@ -1,0 +1,56 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>遍历节点树</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<span>Hello World !</span>
+		<form>
+			用户名: <input type="text" name="uname"><br/>
+			性别:<label><input type="radio" name="sex" value="1">男</label>
+			<label><input type="radio" name="sex" value="0">女</label>
+		</form>
+		<ul id="nav">
+			<li class="menu-item parent">电影</li>
+			<li class="menu-item parent">综艺
+				<ul class="menu-sub">
+					<li class="menu-item child">跑男</li>
+					<li class="menu-item child">爸爸</li>
+					<li class="menu-item child">极限</li>
+				</ul>
+			</li>
+			<li class="menu-item parent">剧集</li>
+		</ul>	
+    <script>
+			//先查找id为nav的元素对象
+			var ul=document.getElementById("nav");
+			console.log(ul);
+			//想在id为nav的ul下查找所有li元素
+			var lis=ul.getElementsByTagName("li");
+			console.log(lis)
+			//想获得id为nav的ul下第二个li下的唯一一个ul元素对象
+			var ul2=ul.getElementsByTagName("ul")[0];
+			console.log(ul2);
+			//只想查找ul2下的li元素
+			var lis=ul2.getElementsByTagName("li");
+			console.log(lis);
+			//在id为nav的ul下查找所有class为menu-item的元素
+			var items=ul.getElementsByClassName("menu-item");
+			console.log(items);
+			//在id为nav的ul下查找所有class为parent的元素
+			var parents=ul.getElementsByClassName("parent");
+			console.log(parents);
+			//在id为nav的ul下查找唯一一个class为menu-sub的ul元素对象
+			var ul2=ul.getElementsByClassName("menu-sub")[0];
+			console.log(ul2);
+
+			//想查找name名为sex的所有radio
+			var radios=document.getElementsByName("sex");
+			console.log(radios);
+			//只想查找唯一的name为uname的姓名文本框对象
+			var input=document.getElementsByName("uname")[0];
+			console.log(input);
+		</script>
+	</body>
+</html>

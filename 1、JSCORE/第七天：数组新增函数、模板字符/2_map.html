@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr=[1,2,3,4,5];
+    //想对数组中每个元素*2后，放入一个新数组返回，保护原数组不变
+    var arr2=arr.map(function(elem){
+      return elem*2;
+    });
+    console.log(arr);
+    console.log(arr2);
+  </script>
+</body>
+</html>

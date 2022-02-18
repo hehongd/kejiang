@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    #pages{ list-style: none; }
+    #pages>li{
+      float:left;
+      padding:5px 10px; 
+      border:1px solid #aaa;
+      margin:0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!--希望总页数是几，就反复生成几个分页分页按钮-->
+    <ul id="pages">
+      <li v-for="i of pageCount" :key="i">{{i}}</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        pageCount:5,//分页时都会有一个变量保存总页数
+      }
+    })
+  </script>
+</body>
+</html>

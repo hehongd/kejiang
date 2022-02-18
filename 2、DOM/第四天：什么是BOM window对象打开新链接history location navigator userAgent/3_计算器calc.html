@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>取消与利用冒泡</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<div id="keys">
+			<button>1</button><span>*</span>
+			<button>2</button><span>*</span>
+			<button>3</button><span>*</span>
+			<button>4</button><span>*</span><br>
+			<button>C</button><span>*</span>
+			<button>+</button><span>*</span>
+			<button>-</button><span>*</span>
+			<button>=</button><span>*</span>
+		</div>
+		<textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
+    <script>
+			//DOM 4步
+			//1. 查找触发事件的元素
+			//本例中: id为keys下的每个button都可点击
+			//因为每个按钮都能点，所以事件应该只绑定在父元素div上一份即可
+			var div=document.getElementById("keys")
+			//2. 绑定事件处理函数
+			//本例中: 绑定单击事件：
+			div.onclick=function(e){
+				//希望点每个按钮都能喊疼！
+				//alert("疼!");
+				//希望点哪个按钮，让哪个按钮的内容变成❀
+				//错误: 事件是绑定在父元素div上，所以this->父元素div
+				//this.innerHTML="❀";
+				//正确: e.target，代替this
+				//只希望button元素才能变成❀，别的元素即使点了，也不要变！
+				//          标签名      
+				if(e.target.nodeName=="BUTTON"){
+					//e.target.innerHTML="❀"
+					//3. 查找要修改的元素
+					//本例中：每次点击按钮，都要修改下方的文本框
+					var sc=document.getElementById("sc");
+					//4. 修改元素
+					//先判断点击的按钮的内容
+					switch(e.target.innerHTML){
+						//如果是C，就清空显示屏文本框
+						case "C":
+							sc.value="";
+							break;
+						//如果是=，就将文本框内容，交给eval计算结果，再将结果放回显示屏中
+						case "=":
+							//错误处理: 复习第一阶段
+							try{//尝试执行
+								//eval: 可计算字符串类型的js表达式的值.——复习第一阶段
+								sc.value=eval(sc.value);
+							}catch(err){//如果出错
+								sc.value=err;//就把错误信息显示在文本框中
+							}
+							break;
+						//点击其余所有数字按钮和+ -号按钮，都只将按钮内容追加到文本框中算式结尾即可，不做计算
+						default: 
+							sc.value+=e.target.innerHTML;
+					}
+				}
+				
+			}
+		</script>
+	</body>
+</html>

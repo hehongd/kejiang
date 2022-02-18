@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a=10;
+    console.log(window.a);//10
+    //(function(){
+    let b=10;
+    console.log(window.b);//undefined
+    //})()
+
+    console.log(c);//undefined
+    var c=10;
+    console.log(c);//10
+
+    //console.log(d);//报错: Cannot access 'd' before initialization
+    //                      不能    访问  的   在       初始化    之前
+    //let d=10;
+    //console.log(d);//10
+
+    var e=10;
+    var e=100;
+    console.log(e);//100
+
+    //let f=10;
+    //let f=100; //报错：Identifier 'f' has already been declared
+    //               标识符/变量名 f       已经    被    声明过了
+  </script>
+</body>
+</html>
