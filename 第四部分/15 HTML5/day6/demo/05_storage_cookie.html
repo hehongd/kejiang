@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //设置cookie的语法结构是：
+    //document.cookie = '键名=键值';
+    //如果我要同是存储id=5,还要存储username=rose,还要存储age=18,请问代码怎么写?
+    document.cookie = 'id=5';
+    document.cookie = 'username=rose';
+    document.cookie = 'age=18';    
+    //document.cookie = 'info=id=5&username=rose&age=18';
+    //console.log(document.cookie.substr(5));
+    console.log(document.cookie);
+  </script>
+</body>
+</html>

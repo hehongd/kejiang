@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <video src="video/oceans.mp4" id="video" width="480" height="200"></video>
+  <script>
+    //获取HTMLVideoElement对象
+    let videoEle = document.getElementById('video');   
+    //获取视频对象的实际宽度和实际高度 -- 已加载视频的第一帧数据
+    videoEle.addEventListener('loadeddata',()=>{
+        console.log(videoEle.videoWidth);
+        console.log(videoEle.videoHeight);
+    });
+    //设置视频对象的海报帧
+    videoEle.poster = 'ad/poster.jpg';
+    console.log(videoEle.poster);
+  </script>
+</body>
+</html>

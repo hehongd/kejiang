@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="600" height="400">
+  </canvas>
+  <script>
+    //获取HTMLCanvasElement对象
+    let canvasEle = document.getElementById('canvas');
+    //获取CanvasRenderingContext2D对象
+    let ctx = canvasEle.getContext('2d');
+    //设置描边颜色
+    ctx.strokeStyle = 'red';
+    //绘制矩形框
+    ctx.strokeRect(200,200,100,150);
+    //设置填充颜色
+    ctx.fillStyle = '#f00';
+    //绘制填充矩形
+    ctx.fillRect(350,200,100,150);
+    //设置填充颜色
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    //绘制填充矩形
+    ctx.fillRect(200,50,250,100);
+  </script>
+</body>
+
+</html>

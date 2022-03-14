@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;padding: 0;
+      list-style: none;
+    }
+    #com{
+      width: 500px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    #com ul{
+      width: 1000px;
+      height: 200px;
+      position: absolute;
+      left: 0;
+    }
+    #com ul li{
+      width: 100px;
+      height: 200px;
+      float: left;
+    }
+    .col1{
+      background: #ff00ff;
+    }
+    .col2{
+      background: #ff0000;
+    }
+    .col3{
+      background: #0000ff;
+    }
+    .col4{
+      background:#ffdeab;
+    }
+    .col5{
+      background: #ffff00;
+    }
+    .div{
+      margin-left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="com">
+    <ul>
+      <li class="col1">1</li>
+      <li class="col2">2</li>
+      <li class="col3">3</li>
+      <li class="col4">4</li>
+      <li class="col5">5</li>
+    </ul>
+  </div>
+  <div class="div">
+    <div id="btnstart">开始</div>、
+    <div id="btnover">停止</div>
+  </div>
+</body>
+<script>
+  window.onload=function(){
+    var com= document.getElementById("com");
+    var btnstart= document.getElementById("btnstart");
+    var btnover= document.getElementById("btnover");
+    var ul = com.getElementsByTagName("ul")[0];
+    //offsetLeft 水平偏移
+    //offsetTop 上下偏移
+    //offsetWidth ul宽度，内容+边框内边距
+    ul.innerHTML += ul.innerHTML;
+    function run(){
+      if(ul.offsetLeft < -ul.offsetWidth /2){
+        ul.style.left = 0 ;
+      }
+      ul.style.left = ul.offsetLeft - 2 +"px";
+    }
+    var tim
+    btnstart.onclick= function(){
+      clearInterval(tim);
+      tim = setInterval(run,30);
+    }
+    btnover.onclick= function(){
+      clearInterval(tim);
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,23 @@
+<wxs src="../../format.wxs" module="t"></wxs>
+<view class="container">
+  <!-- 排行榜列表开始 -->
+  <view class="list">
+     <!-- 单一影片开始 -->
+     <view class="item" wx:for="{{movies}}" wx:key="index">
+        <image src="{{item.images.large}}" class="poster"></image>
+        <view class="meta">
+            <view class="title">{{item.title}}</view>
+            <view class="subTitle">{{item.original_title}}({{item.year}})</view>
+            <view class="directors">{{item.directors[0].name}}</view>
+        </view>
+        <view class="rating">
+            <text>{{item.rating.average}}</text>
+        </view>
+     </view>
+     <!-- 单一影片结束 --> 
+     <view class="hasNoMore" wx:if="{{!hasMore}}">
+        <text>已经到底了...</text>
+     </view>    
+  </view>
+  <!-- 排行榜列表结束 -->
+</view>

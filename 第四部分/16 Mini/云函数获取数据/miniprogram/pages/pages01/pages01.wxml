@@ -1,0 +1,2 @@
+<button type="primary" bindtap="ddd">调用</button>
+<button type="primary" bindtap="bbb">获取全部数据</button>

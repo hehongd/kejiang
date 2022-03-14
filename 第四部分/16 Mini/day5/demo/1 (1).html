@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	
+	<script type="text/javascript">
+		var keys = ['username','password','age'];
+		var values =[];
+		values['username'] = '达内';
+		values['password'] = '12345';
+		values['age'] = 22;
+		// console.log(keys);
+		// console.log(values);
+		keys.forEach((item)=>{
+			//数组的键名是一个变量
+			//console.log(values[item]);
+		});
+		//////////////////////////////////////////////////////////////
+		var keys = ['username','password','age'];
+		var obj = {
+			username:'Tom',
+			password:'12345',
+			age:26
+		}
+		keys.forEach(item=>{
+			console.log(obj[item]);
+		})
+		////////////////////////////////////
+		var obj = {
+			username:'Tom',
+			password:'12345',
+			age:26
+		}
+		for(key in obj){
+			console.log(key);
+		}
+	</script>
+</body>
+</html>

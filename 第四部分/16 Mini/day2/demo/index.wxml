@@ -1,0 +1,7 @@
+
+<view>
+  <navigator url="../image/image">图片页面</navigator>
+</view>
+<view>
+  <navigator url="/pages/button/button">按钮页面</navigator>
+</view>

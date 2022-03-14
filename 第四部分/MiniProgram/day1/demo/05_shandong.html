@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script src="echarts/echarts.min.js"></script>
+    <script src="echarts/map/js/province/shandong.js"></script>
+    <script>
+        let chartEle = document.getElementById('chart');
+        let chartInstance = echarts.init(chart, '', {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            renderer: 'canvas' //renderer:'svg'
+        });
+        option = {
+            title: {
+                text: '山东累计确诊疫情地图',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}:{c}例'
+            },
+            visualMap: {
+                // 分段型视觉映射
+                type: 'piecewise',
+                pieces: [
+                    { min: 500 },
+                    { min: 100, max: 499 },
+                    { min: 60, max: 99 },
+                    { min: 30, max: 59 },
+                    { min: 10, max: 29 },
+                    { min: 1, max: 9 },
+                    { min: 0, max: 0 }
+                ],
+                color: ['#97090f', '#dd502f', '#e6846c', '#f8b19b','#fce5d9','#fef4ef','#ffffff']
+            },
+            series: [
+                {
+                    type: 'map',
+                    mapType: '山东',
+                    label: {
+                        show: true,
+                    },
+                    data: [
+                        {
+                            name: '菏泽市',
+                            value: 0
+                        },
+                        {
+                            name: '济宁市',
+                            value: 14
+                        },
+                        {
+                            name: '枣庄市',
+                            value: 123
+                        },
+                        {
+                            name: '临沂市',
+                            value: 321
+                        },
+                        {
+                            name: '泰安市',
+                            value: 76
+                        },
+                        {
+                            name: '日照市',
+                            value: 87
+                        },
+                        {
+                            name: '聊城市',
+                            value: 109
+                        },
+                        {
+                            name: '德州市',
+                            value: 0
+                        },
+                        {
+                            name: '济南市',
+                            value: 6
+                        },
+                        {
+                            name: '淄博市',
+                            value: 42
+                        },
+                        {
+                            name: '滨州市',
+                            value: 51
+                        },
+                        {
+                            name: '东营市',
+                            value: 88
+                        },
+                        {
+                            name: '潍坊市',
+                            value: 18
+                        },
+                        {
+                            name: '烟台市',
+                            value: 23
+                        },
+                        {
+                            name: '青岛市',
+                            value: 809
+                        },
+                        {
+                            name: '威海市',
+                            value: 55
+                        },
+                        {
+                            name: '莱芜市',
+                            value: 34
+                        }
+                    ]
+                }
+            ]
+        };
+        chartInstance.setOption(option);
+    </script>
+</body>
+
+</html>

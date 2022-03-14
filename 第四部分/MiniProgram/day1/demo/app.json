@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/me/me",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#e5e5e5",
+    "navigationBarBackgroundColor": "#900",
+    "navigationBarTitleText": "学子电影",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#900",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index_disable.png",
+        "selectedIconPath": "images/index_enable.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "images/me_disable.png",
+        "selectedIconPath": "images/me_enable.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

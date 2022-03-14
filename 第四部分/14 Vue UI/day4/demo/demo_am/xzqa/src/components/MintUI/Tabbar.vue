@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <mt-tabbar>
+        <mt-tab-item>
+            首页
+        </mt-tab-item>
+        <mt-tab-item>
+            购物车
+        </mt-tab-item>
+        <mt-tab-item>
+            我的
+        </mt-tab-item>
+    </mt-tabbar>
+  </div>
+</template>

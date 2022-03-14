@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    p,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+    #heading {
+      text-align: center;
+      font: 36px/1.7 'Microsoft Yahei';
+    }
+
+    #drag-container {
+      margin: 0 auto;
+      width: 800px;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      background-color: bisque;
+    }
+  </style>
+  <script src="axios.min.js"></script>
+</head>
+
+<body>
+  <h1 id="heading">拖放上传</h1>
+  <div id="drag-container">文件拖拽到此实现上传</div>
+  <script>
+    //获取目标对象
+    let dragContainerEle = document.getElementById('drag-container');
+
+    //在目标对象范围内悬停
+    dragContainerEle.addEventListener('dragover', function (event) {
+      event.preventDefault();
+    });
+
+    //在目标对象范围内释放源对象
+    dragContainerEle.addEventListener('drop', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      //1.创建FormData对象 -- 想像成<form></form>
+      let formData = new FormData();
+      //在FormData对象中添加键值对
+      formData.append('username', 'Tom');
+      formData.append('password', '123');
+      //2.获取用户拖放的文件对象 -- FileList对象
+      let files = event.dataTransfer.files;
+      //3.将文件对象依次存储到FormData中 -- 想像成 <form><input type="file">...</form>
+      //选择的文件超过1个再上传
+      if(files.length){
+          for(let n = 0;n<files.length;n++){
+            //将拖放上传的文件信息依次添加到表单中
+            formData.append('aaa',files[n]);
+          }          
+      }
+      //4.将FormData提交给WEB服务器      
+      axios.post('http://127.0.0.1:3000/drag',formData);
+    });
+
+  </script>
+</body>
+
+</html>

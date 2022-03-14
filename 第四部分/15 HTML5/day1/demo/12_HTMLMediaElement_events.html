@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      position: relative;
+      width: 640px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    #ad {
+      position: absolute;
+      width: 400px;
+      height: 300px;
+      left: 50%;
+      top: 50%;
+      margin-top: -150px;
+      margin-left: -200px;
+    }
+
+    p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="ad">
+      <img src="ad/0D0100005E2EF493395059357930375A.jpg" alt="" id="ad-image">
+    </div>
+    <video id="video" src="video/video.mp4" width="640" height="360"></video>
+  </div>
+  <p>
+    <span id="current">00:00</span>
+    /
+    <span id="duration">00:00</span>
+  </p>
+  <p><button onclick="toggleControl()">播放/暂停</button></p>
+  <script>
+
+    let adLists = [
+      '0D0100005E0DB3591241923143384738.jpg', 
+      '0D0100005E2EF493395059357930375A.jpg',
+      '0D0100005E4DDCB31126293290574D55.jpg',
+      '0D0100005E40CB833950593579383235.jpg',
+      '0D0100005E254C951831383513533435.jpg',
+      '0D0100005E4149B13950593579363944.jpg',
+      '0D0100005E42288F9115223570333345.jpg',
+      '0D0100005E588109395059360246315A.jpg',
+    ];
+
+    let videoEle = document.getElementById('video');
+
+    function toggleControl() {
+      if (videoEle.paused || videoEle.ended) {
+        videoEle.play();
+      } else {
+        videoEle.pause();
+      }
+    }
+
+    //在媒体对象的第一帧加载完毕后
+    videoEle.addEventListener('loadeddata', () => {
+      //获取当前播放时间
+      let current = parseInt(videoEle.currentTime);
+      //获取总时长
+      let duration = parseInt(videoEle.duration);
+      //改变当前播放时间及总时长信息
+      document.getElementById('current').innerText = current;
+      document.getElementById('duration').innerText = duration;
+    });
+
+    //在媒体对象的currentTime属性发生变化时
+    videoEle.ontimeupdate = () => {
+      //获取当前播放时间
+      let current = parseInt(videoEle.currentTime);
+      //改变当前播放时间
+      document.getElementById('current').innerText = current;
+    }
+
+    //当媒体对象播放时
+    videoEle.onplay = () => {
+      let adEle = document.getElementById('ad');
+      adEle.style.display = 'none';
+    }
+
+    //当媒体对象暂停时
+    videoEle.onpause = () => {
+      let adEle = document.getElementById('ad');
+      let adImageEle = document.getElementById('ad-image');
+      adImageEle.src = 'ad/' + adLists[Math.floor(Math.random() * adLists.length)]; 
+      adEle.style.display = 'block';
+    }
+
+
+  </script>
+</body>
+
+</html>

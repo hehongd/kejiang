@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="video"></video>
+  <p><button onclick="setVideoAttribute()" >设置视频属性</button></p>
+  <script>
+    function setVideoAttribute() {
+      //获取HTMLVideoElement
+      let videoEle = document.getElementById('video');
+      //设置HTMLVideoElement的URL属性
+      videoEle.src = 'video/oceans.mp4';
+      //设置HTMLVideoElement的width、height属性
+      videoEle.width = 480;
+      videoEle.height = 200;
+      //设置HTMLVideoElement的autoplay属性为true
+      videoEle.autoplay = true;
+      //设置HTMLVideoElement的muted属性为true
+      videoEle.muted = true;
+      //设置HTMLVideoElement的controls属性为true
+      videoEle.controls = true;
+    }
+  </script>
+</body>
+
+</html>

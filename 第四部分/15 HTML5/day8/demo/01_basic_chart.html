@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #charts{
+      width:600px;
+      height: 480px;
+      border:2px solid #f00;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="charts"></div>
+  <script src="scripts/echarts.4.8.0.min.js"></script>
+  <script>
+     //获取DIV元素 -- 将作为图表的渲染容器
+     let chartsEle = document.getElementById('charts');
+     //创建图表实例
+     let instance = echarts.init(chartsEle);
+     //通过图表实例的setOption()方法来设置图表配置
+     instance.setOption({
+        title:{
+          text:'2020年京东618销售统计图'
+        },
+        xAxis:{
+          type:'category',
+          data:['家用电器','手机数码','电脑办公','家居家具']
+        },
+        yAxis:{
+
+        },
+        series:[
+          {
+            type:'bar',
+            data:[500,360,970,425]
+          }
+        ]
+     });
+  </script>
+</body>
+</html>

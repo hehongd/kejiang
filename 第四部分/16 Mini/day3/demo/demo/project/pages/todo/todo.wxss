@@ -1,0 +1,17 @@
+.container{
+  margin:15rpx;
+  padding:15rpx;
+  border:1px solid #333;
+}
+.todo-header{
+  display: flex;
+  align-items: center;
+}
+.todo-header input{
+  flex: 4;
+  padding:8rpx 0;
+  border:1px solid #900;
+}
+.todo-header button{
+  flex: 1;
+}

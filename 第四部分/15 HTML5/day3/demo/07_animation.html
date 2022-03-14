@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    p,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 1366;
+    canvasEle.height = 300;
+    //圆的类
+    function Circle(x, y, radius) {
+      //X轴坐标
+      this.x = x;
+      //Y轴坐标
+      this.y = y;
+      //半径
+      this.radius = radius;
+      //X轴移动距离
+      this.xDistance = Math.random() * 2 > 1 ? Math.random() * 2 : - Math.random() * 2 ;
+      //Y轴移动距离
+      this.yDistance = Math.random() * 2 > 1 ? Math.random() * 2 : - Math.random() * 2;
+    }
+    //绘制一个圆形
+    function draw(x,y,radius) {      
+      let circle = new Circle(x, y, radius);
+      circle.x += circle.xDistance;
+      circle.y += circle.yDistance;
+      //设置填充颜色
+      ctx.fillStyle = '#fff';
+      //绘制圆形
+      ctx.beginPath();
+      ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+      ctx.fill();
+  
+    }
+
+    //初始化圆形
+    let array = [];
+    let number = 100;
+    function init() {
+      for (let n = 0; n < number; n++) {
+          //X轴随机坐标
+          let x = Math.floor(Math.random() * canvasEle.width);
+          //Y轴随机坐标
+          let y = Math.floor(Math.random() * canvasEle.height);
+          //半径的随机值
+          let radius = Math.ceil(Math.random() * 3) + 1;
+          array.push(new Circle(x,y,radius));      
+      }
+    }
+
+
+    function animation(){
+        ctx.clearRect(0,0,canvasEle.width,canvasEle.height);
+        for(let n = 0;n<array.length;n++){
+          draw(array[n].x,array[n].y,array[n].radius);
+        }
+        window.requestAnimationFrame(animation);
+    }
+    //初始化要绘制的圆形
+    init();
+    //循环绘制初始化后圆形
+    animation();
+  </script>
+</body>
+
+</html>

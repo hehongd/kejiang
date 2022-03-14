@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/page01/page01",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTitleText": "学子影院",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#0aa1eb",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#e5e5e5"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#0aa1eb",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index" ,
+        "iconPath" :"images/index_disabled.png",
+        "selectedIconPath":"images/index_enabled.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/page01/page01"  ,
+        "iconPath" :"images/cart_disabled.png",
+        "selectedIconPath":"images/cart_enabled.png"    
+      }
+    ]
+  }, 
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

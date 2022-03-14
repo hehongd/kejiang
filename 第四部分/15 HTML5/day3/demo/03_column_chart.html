@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let dataset = [
+      {
+        label: '家用电器',
+        value: 180
+      },
+      {
+        label: '手机数码',
+        value: 120
+      },
+      {
+        label: '电脑办公',
+        value: 100
+      },
+      {
+        label: '家居家具',
+        value: 140
+      }
+    ];
+    //颜色数组
+    let colors = ['#589635', '#128469', '#753684', '#568430', '#865474', '#935475'];
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 800;
+    canvasEle.height = 480;
+    //开始新路径
+    ctx.beginPath();
+    //确定路径起点
+    ctx.moveTo(100, 100);
+    //Y坐标轴
+    ctx.lineTo(100, canvasEle.height - 100);
+    //X坐标轴
+    ctx.lineTo(canvasEle.width - 100, canvasEle.height - 100);
+    ctx.stroke();
+    //柱子的宽度
+    let width = 50;
+    //计算间隔距离
+    let spacer = Math.floor((canvasEle.width - 200 - dataset.length * width) / (dataset.length - 1));
+    //设置文本样式
+    ctx.font = '16px Microsoft Yahei';
+    //设置文本水平对齐方式
+    ctx.textAlign = 'center';
+
+    //循环绘制柱形图
+    for (let n = 0; n < dataset.length; n++) {
+      let color = colors[Math.floor(Math.random() * colors.length)];
+      ctx.fillStyle = color;
+      ctx.fillRect(100 + (spacer + width) * n, canvasEle.height - 100 - dataset[n].value, width, dataset[n].value);
+      //绘制文本
+      ctx.fillStyle = '#000';
+      //绘制数字文本
+      ctx.fillText(dataset[n].value,100 + (spacer + width) * n + width / 2, canvasEle.height - 100 - dataset[n].value - 10);
+      //绘制分类文本
+      ctx.fillText(dataset[n].label,100 + (spacer + width) * n + width / 2, canvasEle.height - 100 + 20);
+    }
+  </script>
+</body>
+
+</html>

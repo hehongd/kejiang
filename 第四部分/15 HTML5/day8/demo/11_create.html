@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+        
+    </svg>
+    <p><button onclick="createPolyline()">创建折线图</button></p>
+    <script>
+      function createPolyline(){
+        //1.创建Polyline元素
+        let polylineEle = document.createElementNS('http://www.w3.org/2000/svg','polyline');        
+        //2.设置属性，如points
+        polylineEle.setAttribute('points','20,20,20,100,100,100');
+        polylineEle.setAttribute('stroke','red');
+        polylineEle.setAttribute('stroke-width',4);
+        polylineEle.setAttribute('fill','transparent');
+        //3.将创建的polyline添加到svg元素内
+        document.getElementById('svg').appendChild(polylineEle);
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 300px;
+      height: 200px;
+      margin: 0 auto;
+      background: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <button onclick="exits()">退出全屏</button>
+  </div>
+  <button onclick="enter()">进入全屏</button>
+  <script>
+    function enter() {
+      let divEle = document.getElementById('container');
+      enterFullscreen(divEle);
+    }
+
+    function exits() {
+      exitFullscreen();
+    }
+
+
+    function enterFullscreen(element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen()
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen()
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+
+    function exitFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullScreen) {
+        document.webkitExitFullScreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+
+  </script>
+</body>
+
+</html>

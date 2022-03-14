@@ -1,0 +1,7 @@
+{"_id":"9bf625a55f1a9bbc005eeae019c6664a","sex":true,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":19.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664b","sex":false,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":21.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664c","sex":true,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":17.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664d","sex":false,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":33.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664e","sex":true,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":20.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664f","sex":true,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":46.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":false}}
+{"_id":"9bf625a55f1a9bbc005eeae019c6664g","sex":true,"username":"张三","_openid":"oVOSB4prv2oVoxJgZid-GtO5iX64","age":35.0,"friends":["李四","赵六"],"otherInfo":{"education":"研究生","isMarried":true}}

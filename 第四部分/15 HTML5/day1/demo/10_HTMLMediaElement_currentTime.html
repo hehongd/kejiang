@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="video" src="video/video.mp4" width="640" height="360" controls></video>
+  <p><button onclick="changeCurrentTime('10')">前进10秒</button></p>
+  <p><button onclick="changeCurrentTime('-10')">后退10秒</button></p>
+  <script>
+    function changeCurrentTime(value){
+      let videoEle = document.getElementById('video');
+      //设置HTMLMediaElement对象的当前的播放时间
+      videoEle.currentTime += parseInt(value);
+    }
+  </script>
+</body>
+</html>

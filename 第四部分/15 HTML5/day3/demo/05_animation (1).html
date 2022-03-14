@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    //颜色数组
+    let colors = ['#589635', '#128469', '#753684', '#568430', '#865474', '#935475'];
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 800;
+    canvasEle.height = 480;
+    //X轴与Y轴的起始坐标
+    let x = Math.floor(Math.random() * canvasEle.width);
+    let y = Math.floor(Math.random() * canvasEle.height);
+
+    if (x > canvasEle.width - 50) {
+      x = canvasEle.width - 50;
+    }
+    
+    if (y > canvasEle.height - 50) {
+      y = canvasEle.height - 50;
+    }
+
+    //X轴移动的距离
+    let xDistance = 1;
+    //Y轴移动的距离
+    let yDistance = 2;
+
+    window.setInterval(() => {
+      x += xDistance;
+      y += yDistance;
+      ctx.clearRect(0, 0, canvasEle.width, canvasEle.height);
+      ctx.fillRect(x, y, 50, 50);
+      //最右侧
+      if (x > canvasEle.width - 50) {
+        xDistance = -1;
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+      }
+      //最左侧
+      if (x < 0) {
+        xDistance = 1;
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+      }
+      //最底部
+      if (y > canvasEle.height - 50) {
+        yDistance = -2;
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+      }
+      //最顶部
+      if (y < 0) {
+        yDistance = 2;
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+      }
+    }, 15);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<template>
+  <div>
+    {{education}}<br>
+    {{sex}}
+    <mt-radio 
+      title="学历"
+      :options="[
+        {
+          label:'高职',
+          value:'1'
+        },
+        {
+          label:'专科',
+          value:'2'
+        },
+        {
+          label:'本科',
+          value:'3'
+        },
+        {
+          label:'研究生',
+          value:'4'
+        }
+      ]"
+      v-model="education">
+    </mt-radio>
+    <mt-radio 
+      title="性别"
+      :options="['男','女','保密']"
+      v-model="sex"></mt-radio>
+  </div>
+</template>
+<script>
+export default {
+   data(){
+     return {
+       sex:'保密',
+       education:'1'
+     }
+   }
+}
+</script>

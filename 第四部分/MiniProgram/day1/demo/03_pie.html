@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <style>
+        #container {
+            width: 900px;
+            height: 480px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="echarts/echarts.min.js"></script>
+    <script>
+        let divEle = document.getElementById('container');
+        let chart = echarts.init(divEle, null, {
+            renderer: 'canvas' //renderer:'svg'
+        });
+        // 指定图表的配置项和数据
+        let option = {
+            title: {
+                text: '全国现有确诊构成',
+                left: 'center'
+            },
+            tooltip: {
+                backgroundColor: 'rgba(245, 245, 245, 0.8)',
+                borderWidth: 1,
+                borderColor: '#ccc',
+                padding: 10,
+                textStyle: {
+                    color: '#000'
+                },
+                formatter:'{b}:{c}例<br>({d}%)'
+            },
+            //color:['#fe350e','#fe7155','#b12409'],
+            series: [
+                {
+                    //name:'截止10月18日24时数据统计,共449例',
+                    type: 'pie',
+                    label:{
+                        show:true,
+                        position:'outer',
+                        formatter: '{b}:\n{c}例({d}%)',
+                        //align:'left'
+                    },
+                    data: [
+                        {
+                            name:'港澳台病例',
+                            value:200
+                        },
+                        {
+                            name:'31省本地病例',
+                            value:13
+                        },
+                        {
+                            name:'境外输入病例',
+                            value:236
+                        },
+                        {
+                            name:'台湾地区',
+                            value:236
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // 使用指定的配置项和数据显示图表。
+        chart.setOption(option);
+    </script>
+</body>
+
+</html>

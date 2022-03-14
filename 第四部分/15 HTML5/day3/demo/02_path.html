@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 800;
+    canvasEle.height = 480;
+    //开始新路径
+    ctx.beginPath();
+    //移动起始点到指定位置
+    ctx.moveTo(100, 100);
+    //绘制直线
+    ctx.lineTo(200, 100);
+    ctx.lineTo(200, 200);
+    //绘制路径
+    ctx.strokeStyle = 'red';
+    ctx.stroke();
+    /////////////////////////////////////////
+    //开始新路径
+    ctx.beginPath();
+    //移动起始点到指定位置
+    ctx.moveTo(400, 100);
+    //绘制直线
+    ctx.lineTo(400, 200);
+    ctx.lineTo(300, 200);
+    ctx.closePath();
+    //绘制路径
+    ctx.fillStyle = 'blue';
+    ctx.fill();
+  </script>
+</body>
+
+</html>

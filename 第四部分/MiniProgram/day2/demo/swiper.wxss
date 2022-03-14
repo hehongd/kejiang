@@ -1,0 +1,16 @@
+swiper{
+  width:750rpx;
+  height: 375rpx;
+}
+swiper image{
+  width:750rpx;
+  height: 375rpx;
+}
+swiper view{
+  position: relative;
+}
+swiper view text{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}

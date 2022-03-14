@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 顶部轮播图开始 -->
+  <view class="swiper">
+      <swiper autoplay="true" indicator-dots="true" indicator-active-color="#fff" circular="true">
+          <swiper-item wx:for="{{swiperArray}}"  wx:key="index">
+            <image src="{{item.images.large}}"></image>
+          </swiper-item>
+      </swiper>
+  </view>
+  <!-- 顶部轮播图结束 -->
+  <!-- 即将上映的影片版块开始 -->
+  <view class="board">
+      <!-- 标题信息开始 -->
+      <view class="board-title">即将上映的影片</view>
+      <!-- 标题信息结束 -->
+      <!-- 影片列表开始 -->
+      <view class="movie-list">
+          <!-- 单一影片开始 -->
+            <view class="movie-item" wx:for="{{coming_soon}}" wx:key="index">
+                <navigator url="/pages/detail/detail?id={{item.id}}">
+                  <image src="{{item.images.large}}"></image>
+                  <text>{{item.title}}</text>
+                </navigator>
+            </view>        
+          <!-- 单一影片结束 -->
+      </view>
+      <!-- 影片列表结束 -->
+  </view>
+  <!-- 即将上映的影片版块结束 -->
+
+  <!-- 正在热映的影片版块开始 -->
+  <view class="board">
+      <!-- 标题信息开始 -->
+      <view class="board-title">正在热映的影片</view>
+      <!-- 标题信息结束 -->
+      <!-- 影片列表开始 -->
+      <view class="movie-list">
+          <!-- 单一影片开始 -->
+            <view class="movie-item" wx:for="{{in_theaters}}" wx:key="index">
+                <image src="{{item.images.large}}"></image>
+                <text>{{item.title}}</text>
+            </view>        
+          <!-- 单一影片结束 -->
+      </view>
+      <!-- 影片列表结束 -->
+  </view>
+  <!-- 正在热映的影片版块结束 -->
+
+
+  <!-- 正在热映的影片版块开始 -->
+  <view class="board">
+      <!-- 标题信息开始 -->
+      <view class="board-title">TOP250的影片</view>
+      <!-- 标题信息结束 -->
+      <!-- 影片列表开始 -->
+      <view class="movie-list">
+          <!-- 单一影片开始 -->
+            <view class="movie-item" wx:for="{{top250}}" wx:key="index">
+                <image src="{{item.images.large}}" webp="true"></image>
+                <text>{{item.title}}</text>
+            </view>        
+          <!-- 单一影片结束 -->
+      </view>
+      <!-- 影片列表结束 -->
+  </view>
+  <!-- 正在热映的影片版块结束 -->
+
+</view>

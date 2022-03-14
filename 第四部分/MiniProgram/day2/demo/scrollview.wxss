@@ -1,0 +1,21 @@
+.item image,.item text{
+  display: block;
+}
+.item image{
+  width:160rpx;
+  height:224rpx;
+}
+.item text{
+  text-align: center;
+  font-size:14px;
+}
+.actors{
+  display: flex;
+  white-space: nowrap;
+}
+.item {
+  margin:0 10rpx;
+  height: 270rpx ;
+  /* display: inline-block; */
+  /* border:2px solid #f00; */
+}

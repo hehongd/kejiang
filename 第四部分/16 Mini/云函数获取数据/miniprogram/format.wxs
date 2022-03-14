@@ -1,0 +1,19 @@
+function formatNumber(value){
+  return value.toFixed(1);
+}
+function formatArray(array){
+  var str = '';
+  for(var n=0;n<array.length;n++){
+    var obj = array[n];
+    if(str == ''){
+      str = obj.name;
+    } else {
+      str += '/' + obj.name;
+    }
+  }
+  return str;
+}
+module.exports = {
+  formatNumber:formatNumber,
+  formatArray:formatArray
+}

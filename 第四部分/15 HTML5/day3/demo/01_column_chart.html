@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 800;
+    canvasEle.height = 480;
+    //颜色数组
+    let colors = ['#589635', '#128469', '#753684', '#568430', '#865474', '#935475'];
+    //要绘制的数据
+    let dataset = [150, 170, 90, 260, 199, 166];
+    //柱形图的宽度
+    let width = 50;
+    //计算间隔距离
+    let spacer = Math.floor((canvasEle.width - dataset.length * width) / (dataset.length - 1));
+    
+    //设置文本样式
+    ctx.font = '16px Microsoft Yahei';
+    //设置文本水平对齐方式
+    ctx.textAlign = 'center';
+
+    //循环绘制
+    for (let n = 0; n < dataset.length; n++) {
+      let color = colors[Math.floor(Math.random() * colors.length)];
+      ctx.fillStyle = color;
+      //绘制填充矩形
+      ctx.fillRect((spacer + width) * n, canvasEle.height - dataset[n], width, dataset[n]);
+      //绘制文本
+      ctx.fillStyle = '#000';
+      ctx.fillText(dataset[n], (spacer + width) * n + width / 2, canvasEle.height - dataset[n] - 10);
+    }
+  </script>
+</body>
+
+</html>

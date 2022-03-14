@@ -1,0 +1,10 @@
+<view>
+  <swiper autoplay="true">
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <image src="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view>
+  <navigator url="/pages/todo/todo?id=1&pid=2&cid=3">URL传递</navigator>
+</view>

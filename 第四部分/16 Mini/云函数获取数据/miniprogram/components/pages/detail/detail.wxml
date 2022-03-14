@@ -1,0 +1,10 @@
+<wxs src="../../format.wxs" module="tools"></wxs>
+<view>
+  {{detail.title}}{{detail.original_title}}({{detail.year}})
+</view>
+<view>
+  <image src="{{detail.images.large}}"></image>
+</view>
+<view>
+导演:{{tools.formatArray(detail.directors)}}
+</view>

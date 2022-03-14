@@ -1,0 +1,11 @@
+<!--pages/testing/text/text.wxml-->
+<text decode="true">
+  A&gt;B
+  B&lt;A
+  Tom&amp;John
+  I&apos;m a student.
+  A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B
+  中&emsp;国
+  中&ensp;国
+</text>
+<text user-select="true">新华社北京12月17日电 12月17日1时59分，嫦娥五号返回器携带月球样品在内蒙古四子王旗预定区域安全着陆，探月工程嫦娥五号任务取得圆满成功。中共中央总书记、国家主席、中央军委主席习近平发来贺电，代表党中央、国务院和中央军委，向探月工程任务指挥部并参加嫦娥五号任务的全体同志致以热烈的祝贺和诚挚的问候。</text>

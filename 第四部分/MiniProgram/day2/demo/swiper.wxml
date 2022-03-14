@@ -1,0 +1,33 @@
+<swiper autoplay="true" indicator-dots="true" indicator-color="#333" indicator-active-color="#00cc36" circular="true"
+  interval="3000" duration="500">
+  <swiper-item>
+    <view>
+      <image src="/images/4fd0d605d26e40059ec7828baa371805.jpg"></image>
+      <text>黑白禁区：欧豪硬核缉毒</text>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      <image src="/images/80070a6e3e654b689db194f7e1f47b5d.jpg"></image>
+      <text>敦煌：汪涵带团揭秘古代潮流</text>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      <image src="/images/b813e646be3849a18eb7213772be2fdc.jpg"></image>
+      <text>功夫战警：猎鹰小组重拳出击</text>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      <image src="/images/e67bbcb458f04d6085701d395ad102e2.jpg"></image>
+      <text>与你相见：陆毅李一桐宠溺</text>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      <image src="/images/b56493e9d21b4b149d87835e48319c9e.jpg"></image>
+      <text>茶话会：女性买房引争论</text>
+    </view>
+  </swiper-item>
+</swiper>

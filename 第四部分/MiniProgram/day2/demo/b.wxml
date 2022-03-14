@@ -1,0 +1,6 @@
+<navigator url="/pages/testing/c/c" open-type="redirect">
+    重定向
+</navigator>
+<navigator url="/pages/testing/c/c" open-type="reLaunch">
+  重新加载
+</navigator>

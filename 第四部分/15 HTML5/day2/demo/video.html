@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Custom HTML5 Video Player</title>
+  <link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- 视频容器开始 -->
+    <div class="video-container" id="video-container">
+      <div id="video-mask"></div>
+      <!-- 视频元素开始 -->
+      <video class="video" id="video" preload="metadata" poster="poster/poster.jpg">
+        <source src="video/video.mp4" type="video/mp4">
+        </source>
+      </video>
+      <!-- 视频元素结束 -->
+      <!-- 视频控制按钮开始 -->
+      <div class="video-controls" id="video-controls">
+        <!-- 进度条开始 -->
+        <div class="video-progress">
+          <progress id="progress-bar" value="0" min="0"></progress>
+          <input class="seek" id="seek" value="0" min="0" type="range" step="1">
+        </div>
+        <!-- 进度条结束 -->
+        <div class="bottom-controls">
+          <div class="left-controls">
+            <!-- 播放/暂停按钮 -->
+            <button id="control-button">
+              <img src="icons/play.png" alt="" id="control-icon">
+            </button>
+            <div class="volume-controls">
+              <!-- 开启/关闭静音 -->
+              <button id="volume-button">
+                <img src="icons/volume-on.png" alt="" id="volume-icon">
+              </button>
+              <!-- 音量滑块 -->
+              <input class="volume" id="volume" data-volume="0.5" value="0.5" type="range" max="1" min="0" step="0.01">
+            </div>
+            <!-- 当前播放时间及总时长  -->
+            <div class="time">
+              <time id="time-elapsed">00:00</time>
+              <span> / </span>
+              <time id="duration">00:00</time>
+            </div>
+          </div>
+          <div class="right-controls">
+            <!-- 进入/退出全屏 -->
+            <button id="fullscreen-button">              
+              <img src="icons/fullscreen.png" alt="" id="fullsceen-icon">
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 视频控制按钮结束 -->
+    </div>
+    <!-- 视频容器结束 -->
+  </div>
+  <script src="scripts/video.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="video" src="video/video.mp4" width="640" height="360" controls></video>
+  <p><button onclick="changePlaybackRate('0.5')">0.5倍速</button></p>
+  <p><button onclick="changePlaybackRate('1.0')">1.0倍速</button></p>
+  <p><button onclick="changePlaybackRate('1.5')">1.5倍速</button></p>
+  <p><button onclick="changePlaybackRate('2.0')">2.0倍速</button></p>
+  <script>
+    function changePlaybackRate(value){
+      let videoEle = document.getElementById('video');
+      //设置HTMLMediaElement对象的播放速度
+      videoEle.playbackRate = value;
+    }
+  </script>
+</body>
+</html>

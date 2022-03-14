@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <style>
+        #container {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="echarts/echarts.min.js"></script>
+    <script src="echarts/map/js/china.js"></script>
+    <script>
+        let divEle = document.getElementById('container');
+        let chart = echarts.init(divEle, null, {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            renderer: 'canvas' //renderer:'svg'
+        });
+        // 指定图表的配置项和数据
+        let option = {
+            title: {
+                text: '全国(含港澳台)疫情分布图',
+                left: 'center'
+            },
+            tooltip: {
+                backgroundColor: 'rgba(245, 245, 245, 0.8)',
+                borderWidth: 1,
+                borderColor: '#ccc',
+                padding: 10,
+                textStyle: {
+                    color: '#000'
+                },
+                formatter: '{b}:{c}例'
+            },
+            // 视觉映射组件
+            visualMap: {
+                // 分段型视觉映射
+                type: 'piecewise',
+                pieces: [
+                    { min: 10000 },
+                    { min: 1000, max: 9999 },
+                    { min: 500, max: 999 },
+                    { min: 100, max: 499 },
+                    { min: 10, max: 99 },
+                    { min: 1, max: 9 },
+                    { min: 0, max: 0 }
+                ],
+                //color: ['#E0022B', '#E09107', '#A3E00B']
+            },
+            series: [
+                {
+                    //name:'截止10月18日24时数据统计,共449例',
+                    type: 'map',
+                    mapType: 'china',
+                    label: {
+                        show: true,
+                        // position: 'outer'
+                    },
+                    data: [
+                        { name: '北京', value: 0 },
+                        { name: '天津', value: Math.round(Math.random() * 1000) },
+                        { name: '上海', value: Math.round(Math.random() * 1500) },
+                        { name: '重庆', value: Math.round(Math.random() * 400) },
+                        { name: '河北', value: 0 },
+                        { name: '河南', value: Math.round(Math.random() * 2000) },
+                        { name: '云南', value: 123 },
+                        { name: '辽宁', value: 305 },
+                        { name: '黑龙江', value: Math.round(Math.random() * 2000) },
+                        { name: '湖南', value: 200 },
+                        { name: '安徽', value: Math.round(Math.random() * 2000) },
+                        { name: '山东', value: Math.round(Math.random() * 2000) },
+                        { name: '新疆', value: Math.round(Math.random() * 2000) },
+                        { name: '江苏', value: Math.round(Math.random() * 2000) },
+                        { name: '浙江', value: Math.round(Math.random() * 2000) },
+                        { name: '江西', value: Math.round(Math.random() * 2000) },
+                        { name: '湖北', value: Math.round(Math.random() * 9000) },
+                        { name: '广西', value: Math.round(Math.random() * 7000) },
+                        { name: '甘肃', value: Math.round(Math.random() * 6000) },
+                        { name: '山西', value: Math.round(Math.random() * 5000) },
+                        { name: '内蒙古', value: Math.round(Math.random() * 4000) },
+                        { name: '陕西', value: Math.round(Math.random() * 3000) },
+                        { name: '吉林', value: Math.round(Math.random() * 2000) },
+                        { name: '福建', value: Math.round(Math.random() * 2000) },
+                        { name: '贵州', value: Math.round(Math.random() * 1000) },
+                        { name: '广东', value: Math.round(Math.random() * 900) },
+                        { name: '青海', value: Math.round(Math.random() * 800) },
+                        { name: '西藏', value: Math.round(Math.random() * 700) },
+                        { name: '四川', value: Math.round(Math.random() * 600) },
+                        { name: '宁夏', value: Math.round(Math.random() * 500) },
+                        { name: '海南', value: Math.round(Math.random() * 400) },
+                        { name: '台湾', value: Math.round(Math.random() * 300) },
+                        { name: '香港', value: Math.round(Math.random() * 200) },
+                        { name: '澳门', value: Math.round(Math.random() * 1000) }
+                    ]
+                }
+            ]
+        };
+
+        // 使用指定的配置项和数据显示图表。
+        chart.setOption(option);
+    </script>
+</body>
+
+</html>

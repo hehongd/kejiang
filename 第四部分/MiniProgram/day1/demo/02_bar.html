@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <style>
+        #container {
+            width: 900px;
+            height: 480px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    
+    <script src="echarts/echarts.min.js"></script>
+    <script src="echarts/thems/tedu.js"></script>
+    <script>
+        let divEle = document.getElementById('container');
+        let chart = echarts.init(divEle, 'tedu', {
+            renderer: 'canvas' //renderer:'svg'
+        });
+        // 指定图表的配置项和数据
+        let option = {
+            title: {
+                text: '境外输入确诊省市TOP10',
+                left: 'center'
+            },
+            //工具栏提示组件
+            tooltip: {
+                show:true,
+                backgroundColor: 'rgba(245, 245, 245, 0.8)',
+                borderWidth: 1,
+                borderColor: '#ccc',
+                padding: 10,
+                textStyle: {
+                    color: '#000'
+                },
+            },
+            xAxis: {
+                type: 'value',
+                // X轴位置
+                position:'top',
+                // 坐标轴名称
+                name:'累计确诊',
+                // 坐标轴名称显示位置(start|center|end)
+                nameLocation:'end',
+                // 坐标轴刻度相关设置
+                axisTick: {
+                    // 是否显示坐标轴刻度
+                    show: false
+                }
+            },
+            yAxis: {
+                type: 'category',
+                data: ['甘肃','天津','福建','内蒙古','四川','北京','陕西','黑龙江','广东','上海'],
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    align:'right'
+                }
+            },
+            series: [
+                {
+                    type: 'bar',
+                    label: {
+                        show: true,
+                        position: 'right',
+                        color: '#000'
+                    },
+                    barWidth: 20,
+                    data: [78,117,121,162,166,177,196,387,488,748]
+                }
+            ]
+        };
+
+        // 使用指定的配置项和数据显示图表。
+        chart.setOption(option);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+<navigator url="/pages/testing/swiper/swiper">跳转到轮播图页面</navigator>
+<navigator url="/pages/index/index" open-type="switchTab">跳转到首页</navigator>

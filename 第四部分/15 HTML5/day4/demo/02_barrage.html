@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    p,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      margin: 0 auto;
+      border:1px solid #333;
+    }
+    #container{
+      width: 780px;
+      padding:10px;
+      margin: 20px auto 0 auto;
+      border:1px solid #333;
+    }
+    #video-wrapper{
+      position: relative;
+      margin: 0 auto;
+      width: 640px;
+      height: 360px;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="video-wrapper">
+            <canvas id="canvas"></canvas>
+            <video controls src="video/video.mp4" width="640" height="360"></video>
+        </div>
+    </div>
+    
+    <div id="container">
+        <input type="text" id="message">
+        <select id="speed">
+            <option value="1">极慢</option>
+            <option value="2">慢</option>
+            <option value="3" selected>正常</option>
+            <option value="6">超快</option>
+        </select>
+        <select id="color">
+            <option value="#000">黑色</option>
+            <option value="#f00">红色</option>
+            <option value="#0f0">绿色</option>
+            <option value="#00f">蓝色</option>
+        </select>
+        <select id="size">
+          <option value="10">超小</option>
+          <option value="12">小的</option>
+          <option value="16" selected>正常</option>
+          <option value="20">超大</option>
+      </select>
+        <button onclick="add()">发送</button>
+    </div>
+    <script>
+      function add(){
+          let messageEle = document.getElementById('message');
+          let speedEle = document.getElementById('speed');
+          let colorEle = document.getElementById('color');
+          let sizeEle = document.getElementById('size');
+          barrages.push({
+            //内容
+            text:messageEle.value,
+            //颜色
+            color:colorEle.value,
+            //字号
+            size:sizeEle.value,
+            //速度
+            speed:speedEle.value,
+            //X轴坐标
+            x:canvasEle.width,
+            //Y轴坐标
+            y:Math.ceil(Math.random() * canvasEle.height)
+          });
+      }
+
+      let canvasEle = document.getElementById('canvas');
+      canvasEle.width = 640;
+      canvasEle.height = 360;
+      let ctx = canvasEle.getContext('2d');
+      let colors = ['#f00','#0f0','#00f','#000'];
+      //测试数据
+      let messages = ['这个演员没眼缘','太不喜欢他了','这个演员不好看','演得还可以','太假了','守护全世界最好的美好'];
+      //构建弹幕文本 -- 内容、颜色、字号、速度及位置等信息
+      let barrages = [];
+      messages.forEach(item=>{
+         //item是字符串类型
+         barrages.push({
+            //内容
+            text:item,
+            //颜色
+            color:colors[Math.floor(Math.random() * colors.length)],
+            //字号
+            size:Math.ceil(Math.random() * 15) + 10,
+            //速度
+            speed:Math.ceil(Math.random() * 3) + 1,
+            //X轴坐标
+            x:Math.ceil(Math.random() * canvasEle.width),
+            //Y轴坐标
+            y:Math.ceil(Math.random() * canvasEle.height)
+         })
+      });
+      //console.log(barrages);
+      //绘制弹幕文本
+      function  draw(){ 
+        ctx.clearRect(0,0,canvasEle.width,canvasEle.height) ;
+        barrages.forEach(item=>{
+          //item为对象类型
+          //字号
+          ctx.font = item.size + 'px Microsoft Yahei';
+          //颜色
+          ctx.fillStyle = item.color;
+
+          //调整文本的水平位置
+          item.x -= item.speed;
+
+          //如果文本水平位置文本的宽度时，则重新从右侧再开始绘制
+          if(item.x <= -(ctx.measureText(item.text).width) ){
+            item.x = canvasEle.width;
+          }
+
+          //绘制文本
+          ctx.fillText(item.text,item.x,item.y);
+
+
+        });
+        //定时调用
+        window.requestAnimationFrame(draw);
+      }
+      
+      draw();
+    </script>
+</body>
+</html>

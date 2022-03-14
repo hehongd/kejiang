@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 960px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <video id="video" src="video/video.mp4" width="640" height="360"></video>
+    <p>
+      <span id="current">00:00</span>
+      /
+      <span id="duration">00:00</span>
+    </p>
+    <p><button onclick="toggleControl()">播放/暂停</button></p>
+  </div>
+  <script>
+    let videoEle = document.getElementById('video');
+
+    function toggleControl() {
+      if (videoEle.paused || videoEle.ended) {
+        videoEle.play();
+      } else {
+        videoEle.pause();
+      }
+    }
+
+    //在媒体对象的第一帧加载完毕后
+    videoEle.addEventListener('loadeddata', () => {
+      //获取当前播放时间
+      let current = parseInt(videoEle.currentTime);
+      //获取总时长
+      let duration = parseInt(videoEle.duration);
+      //改变当前播放时间及总时长信息
+      document.getElementById('current').innerText = current;
+      document.getElementById('duration').innerText = duration;
+    });
+
+    //在媒体对象的currentTime属性发生变化时
+    videoEle.ontimeupdate = () => {
+      //获取当前播放时间
+      let current = parseInt(videoEle.currentTime);
+      //改变当前播放时间
+      document.getElementById('current').innerText = current;
+    }
+  </script>
+</body>
+
+</html>

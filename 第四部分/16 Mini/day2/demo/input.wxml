@@ -1,0 +1,4 @@
+<input type="text" placeholder="请输入用户名"></input>
+<input type="number" placeholder="输入手机号"></input>
+<input type="idcard" placeholder="请输入身份证号"></input>
+<input type="digit" placeholder="请输入工资"></input>

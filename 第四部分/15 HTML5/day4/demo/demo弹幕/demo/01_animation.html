@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,
+    p,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #000;
+    }
+
+    #header {
+      position: relative;
+    }
+
+    #header-title {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    #header-title h1 {
+      margin-top: 90px;
+      color: #fff;
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="header-title">
+      <h1>HTML5新特性</h1>
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script>
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 1366;
+    canvasEle.height = 300;
+    //圆的类
+    function Circle(x, y, radius) {
+      //X轴坐标
+      this.x = x;
+      //Y轴坐标
+      this.y = y;
+      //半径
+      this.radius = radius;
+      //X轴移动距离
+      this.xDistance = Math.random() * 2 > 1 ? Math.random() * 2 : - Math.random() * 2;
+      //Y轴移动距离
+      this.yDistance = Math.random() * 2 > 1 ? Math.random() * 2 : - Math.random() * 2;
+    }
+
+    //绘制一个圆形(圆形对象)
+    function draw(circle) {
+
+      //X轴坐标超过画布宽度
+      if (circle.x > canvasEle.width || circle.x < 0) {
+        circle.xDistance = - circle.xDistance;
+      }
+      // //X轴坐标小于0
+      // if(circle.x < 0){
+      //   circle.xDistance = - circle.xDistance;
+      // }
+      //Y轴坐标超过画布高度
+      if (circle.y > canvasEle.height || circle.y < 0) {
+        circle.yDistance = - circle.yDistance;
+      }
+      // //Y轴坐标小于0
+      // if(circle.y < 0){
+      //   circle.yDistance = - circle.yDistance;
+      // }
+      circle.x += circle.xDistance;
+      circle.y += circle.yDistance;
+      //设置填充颜色
+      ctx.fillStyle = 'rgba(255,255,255,.2)';
+      //绘制圆形
+      ctx.beginPath();
+      ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    function connect() {
+      ctx.strokeStyle = 'rgba(255,255,255,.3)';
+      //最外层循环
+      for (var n = 0; n < array.length; n++) {
+        for (var i = n + 1; i < array.length; i++) {
+          //要计算两点之间的距离，如果距离小于100，则将点连接在一起
+          //直角边的平方
+          let xDistance = (array[n].x - array[i].x ) * (array[n].x - array[i].x );
+          //另一个直角边的平方
+          let yDistance = (array[n].y - array[i].y ) * (array[n].y - array[i].y );
+          //两点的直(斜)线的距离
+          let distance = Math.sqrt( xDistance + yDistance);
+          //如果两点之间的距离小于100，则连接两点
+          if(distance < 100){
+            ctx.beginPath();
+            ctx.moveTo(array[n].x,array[n].y);
+            ctx.lineTo(array[i].x,array[i].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    //初始化圆形
+    let array = [];
+    let number = 100;
+    function init() {
+      for (let n = 0; n < number; n++) {
+        //X轴随机坐标
+        let x = Math.floor(Math.random() * canvasEle.width);
+        //Y轴随机坐标
+        let y = Math.floor(Math.random() * canvasEle.height);
+        //半径的随机值
+        let radius = Math.ceil(Math.random() * 3) + 1;
+        array.push(new Circle(x, y, radius));
+      }
+    }
+
+
+    function animation() {
+      ctx.clearRect(0, 0, canvasEle.width, canvasEle.height);
+      for (let n = 0; n < array.length; n++) {
+        draw(array[n]);
+      }
+      //绘制两点之间的线段
+      connect();
+      window.requestAnimationFrame(animation);
+    }
+    //初始化要绘制的圆形
+    init();
+    //循环绘制初始化后圆形
+    animation();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<view>
+  <text>用户名:{{username + '哈哈哈'}}</text>
+  <icon type="{{type}}" size="{{size}}"></icon>
+
+  <view class="{{class}}">我是VIEW组件</view>
+  <view style="{{style}}">我是行内样式</view>
+  <view style="color:{{color}};text-align:{{align}}">我也是行内样式</view>
+
+ 
+  <view wx:for="{{array}}" wx:key="index">{{index}}--{{item}}</view>
+
+
+  <view wx:for="{{array}}" wx:for-item="user" wx:for-index="key" wx:key="key">
+    {{user}}--{{key}}
+  </view>
+
+  <view wx:if="{{week == 0 || week == 6}}">休息</view>
+  <view wx:else>去上班</view>
+
+  <view wx:if="{{week == 0}}">星期日</view>
+  <view wx:elif="{{week == 1}}">星期一</view>
+  <view wx:elif="{{week == 2}}">星期二</view>
+  <view wx:elif="{{week == 3}}">星期三</view>
+  <view wx:elif="{{week == 4}}">星期四</view>
+  <view wx:elif="{{week == 5}}">星期五</view>
+  <view wx:else>星期六</view>
+
+</view>

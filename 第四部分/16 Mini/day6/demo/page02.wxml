@@ -1,0 +1,1 @@
+<button type="primary" bindtap="f1">上传图片</button>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    canvasEle.width = 800;
+    canvasEle.height = 480;
+    ctx.beginPath();
+    ctx.moveTo(400,240);
+    ctx.arc(400,240,100,0, 2 * Math.PI);
+    ctx.fillStyle = '#f00';
+    ctx.fill();   
+  </script>
+</body>
+
+</html>

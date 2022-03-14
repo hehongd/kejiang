@@ -1,0 +1,51 @@
+<scroll-view 
+  scroll-x="true" 
+  class="actors" 
+  enable-flex="true"
+  enhanced="true"
+  show-scrollbar="{{show}}">
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+  <view class="item">
+    <image src="/images/077243edfcb95859556a2c1732df947b145900.jpg"></image>
+    <text>林超贤</text>
+  </view>
+</scroll-view>

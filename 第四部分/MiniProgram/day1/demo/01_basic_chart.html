@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 600px;
+      height: 400px;
+      margin: 0 auto;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="echarts/echarts.js"></script>
+  <script>
+    //获取HTMLDivElement元素,其将作为图表的渲染容器
+    let divEle = document.getElementById('container');
+    //创建图表实例
+    let instance = echarts.init(divEle);
+    //通过图表的实例的setOption()方法来配置图表
+    instance.setOption({
+      //标题组件
+      title: {
+        //主标题文本
+        text: "2020年12月15日销售统计图",
+        //副标题文本
+        subtext: "截止日期到2020-12-15 23:59:59",
+        //副标题样式
+        subtextStyle: {
+          color: '#333'
+        },
+        //标题距容器左侧的距离
+        left: 'center'
+      },
+      //X轴组件
+      xAxis: {
+        type: 'category',
+        data: [
+          '可口可乐',
+          {
+            value: '百事可乐',
+            textStyle: {
+              color: '#f00',
+              fontWeight: 'bold'
+            }
+          },
+          '雪碧',
+          '芬达'
+        ]
+      },
+      //Y轴组件
+      yAxis: {
+      },
+      // 系列组件
+      series: [
+        {
+          type: 'bar',
+          data: [90, 120, 236, 188]
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

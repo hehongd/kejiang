@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #source,#target{
+      width:200px;
+      height:100px;
+      margin:10px auto;
+    }
+    #source{
+      border:3px solid #f00;
+    }
+    #target{
+      border:3px solid #00f;
+    }
+  </style>
+</head>
+<body>
+    <div id="source">
+        <p id="p" draggable="true"></p>
+    </div>
+    <div id="target"></div>
+    <script>
+      //获取源对象
+      let pEle = document.getElementById('p');
+      pEle.innerText =  Math.ceil(Math.random() * 10000);
+      //获取目标对象
+      let targetEle = document.getElementById('target');
+      //源对象开始拖动时
+      pEle.addEventListener('dragstart',function(event){
+          event.dataTransfer.setData('username',event.target.innerHTML);          
+      });
+
+      targetEle.addEventListener('dragover',function(event){
+          event.preventDefault();
+      });
+      //在目标对象范围内释放左键时
+      targetEle.addEventListener('drop',function(event){
+          //获取拖放数据将放置到目标对象内
+          event.target.innerText = event.dataTransfer.getData('username');
+      });
+
+      //源对象拖放结束后
+      pEle.addEventListener('dragend',function(event){
+          event.target.remove();
+      });
+    </script>
+</body>
+</html>

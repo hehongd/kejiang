@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid #000;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="800" height="400"></canvas>
+  <script>
+    let colors = ['#ff0000','#00ff00','#0000ff','#586afe','#89abcd','#66aadd','#ff3690','#582826','#25832cd'];
+    let canvasEle = document.getElementById('canvas');
+    let ctx = canvasEle.getContext('2d');
+    let array = [100, 170, 260, 90, 310];
+    let width = 50;
+    let height = canvasEle.height;
+    //产生不同的颜色的柱子
+    //绘制柱形图,数组中的数字是高度,每个柱子的宽度为50
+    for (let n = 0; n < array.length; n++) {
+      //绘制矩形
+      ctx.strokeRect(n * width, height - array[n], width, array[n]);
+    }
+  </script>
+</body>
+
+</html>

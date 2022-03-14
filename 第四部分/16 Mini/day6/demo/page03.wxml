@@ -1,0 +1,4 @@
+<button type="primary" bindtap="add">添加记录</button>
+<button type="primary" bindtap="getAll">获取全部记录</button>
+<button type="primary" bindtap="getSpeicalField">获取指定字段的全部记录</button>
+<button type="primary" bindtap="getByCondition1">根据指定条来获取记录</button>

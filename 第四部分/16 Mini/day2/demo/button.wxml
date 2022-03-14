@@ -1,0 +1,7 @@
+<button>按钮1</button>
+<button type="primary">按钮2</button>
+<button type="warn">按钮3</button>
+<button class="b1">按钮4</button>
+<button type="warn" plain="true">镂空</button>
+<button type="warn" plain="true" loading="true">加载中...</button>
+<button type="primary" open-type="share">转发</button>

@@ -1,0 +1,6 @@
+<button type="primary" bindtap="getByAgeAndSex">获取年龄大于30且性别为true的记录</button>
+<button type="primary" bindtap="getAvgAge">获取平均年龄</button>
+<button type="primary" bindtap="changeAge">所有年龄加5岁</button>
+<button type="primary" bindtap="removeById">删除指定ID的记录</button>
+<button type="primary" bindtap="getCloudResult">获取云函数的计算结果</button>
+<button type="primary" bindtap="getCloudComments">获取通过云函数获取的全部评论</button>
